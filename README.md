@@ -5,9 +5,8 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+This app is for our COMP380 class, Introduction to Software Engineering. After many proposals and planning, we decided this app would be the best to develop.
 
-![](header.png)
 
 
 For warehouse usage, user can keep track of every thing within a warehouse or multiple. Each item comes equipped with a barcode and picture of the item.
