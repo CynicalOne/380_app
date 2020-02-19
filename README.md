@@ -18,7 +18,7 @@ Yasmeen
 
 Josh
 
-Kyle
+Kyle [https://github.com/kylechan19]
 
 
 ## Release History
