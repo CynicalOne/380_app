@@ -17,7 +17,7 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+[https://github.com/FeTree](https://github.com/dbader/)
 
 ## Contributing
 
