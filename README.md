@@ -9,6 +9,9 @@ This app is for our COMP380 class, Introduction to Software Engineering. After m
 For warehouse usage, user can keep track of every thing within a warehouse or multiple. Each item comes equipped with a barcode and picture of the item.
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
+## Team
+[https://github.com/FeTree](https://github.com/dbader/)
+
 
 ## Release History
 
@@ -17,7 +20,7 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/FeTree](https://github.com/dbader/)
+
 
 ## Contributing
 
