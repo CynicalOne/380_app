@@ -1,9 +1,6 @@
 # Inventory Manager
 > Tracks inventory whether it be for personal usage or in a warehouse.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
 This app is for our COMP380 class, Introduction to Software Engineering. After many proposals and planning, we decided this app would be the best to develop.
 
