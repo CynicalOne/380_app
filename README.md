@@ -10,10 +10,14 @@ For warehouse usage, user can keep track of every thing within a warehouse or mu
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
 ## Team
-David [https://github.com/FeTree](https://github.com/dbader/) \n
+David [https://github.com/FeTree](https://github.com/dbader/)
+
 Neal
+
 Yasmeen
+
 Josh
+
 Kyle
 
 
