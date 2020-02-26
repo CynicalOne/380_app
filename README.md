@@ -12,7 +12,7 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 ## Team: Storm Eagles
 David [https://github.com/FeTree](https://github.com/dbader/)
 
-Neal
+Neal [https://github.com/CynicalOne]
 
 Yasmeen
 
