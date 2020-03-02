@@ -14,13 +14,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        helloWorld = findViewById(R.id.helloWorldID);
-
-        helloWorld.setText("ANY TRUERS");
-
-        //comment change at 3:05 feb 18
-
-
     }
 }
