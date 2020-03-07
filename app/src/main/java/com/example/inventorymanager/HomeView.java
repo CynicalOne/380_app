@@ -1,4 +1,4 @@
-public class HomeView implements ListEdit<Profile>, EditVeiw<E>
+public class HomeView implements ListEdit<Profile>, EditView<E>
 {
     public Button editButton;
     public Button addButton;
