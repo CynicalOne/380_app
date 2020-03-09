@@ -1,3 +1,9 @@
+package com.example.inventorymanager;
+
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Button;
+
 public class ProfileView implements ListEdit<Location>
 {
     public Profile profile;
