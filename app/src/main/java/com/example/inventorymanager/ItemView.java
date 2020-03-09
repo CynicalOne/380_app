@@ -4,5 +4,8 @@ public class ItemView
     public boolean isBusiness;
     public boolean inEditMode;
     public Button editButton;
+
+    public void clickEditButton() {
+    }
         
 }

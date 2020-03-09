@@ -6,9 +6,9 @@ public class Profile
     public boolean isBusiness;
     public ImageView profilePic;
 
-    public ArrayList Locations;
+    ArrayList Locations = new Arraylist<Locations>;
 
-    // Default constructor
+    //constructor
     public Profile() {
         this.profileName = "Name";
         this.key = -1;

@@ -3,9 +3,9 @@ public class HomeView implements ListEdit<Profile>, EditView<E>
     public Button editButton;
     public Button addButton;
     public boolean inEditMode;
-    final String APP_NAME = "Trackoholic";
+    final String APPNAME = "Trackoholic";
 
-    ArrayList Profiles;
+    ArrayList Profiles = new Arraylist<Profiles>;
     
 
     public void goToProfileView(Profile profile) {
