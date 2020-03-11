@@ -1,3 +1,9 @@
+package com.example.inventorymanager;
+
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Button;
+
 public class HomeView implements ListEdit<Profile>, EditView<E>
 {
     public Button editButton;

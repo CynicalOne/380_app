@@ -1,3 +1,8 @@
+package com.example.inventorymanager;
+
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class Location
 {
     public String locationName;
