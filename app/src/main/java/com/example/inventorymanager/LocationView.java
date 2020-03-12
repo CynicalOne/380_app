@@ -32,6 +32,11 @@ public class LocationView implements ListEdit<Item>
 
     }
 
+    @Override
+    public void clickEditButton() {
+
+    }
+
     public void clickDeleteButton() {
 
     }
