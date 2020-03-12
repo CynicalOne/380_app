@@ -4,14 +4,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 
-public class HomeView implements ListEdit<Profile>, EditView<E>
+import java.util.ArrayList;
+
+public class HomeView implements ListEdit<Profile>
 {
     public Button editButton;
     public Button addButton;
     public boolean inEditMode;
     final String APPNAME = "Trackoholic";
 
-    ArrayList Profiles = new Arraylist<Profiles>;
+    ArrayList<Profile> Profiles = new ArrayList<Profile>();
     
 
     public void goToProfileView(Profile profile) {
@@ -24,7 +26,7 @@ public class HomeView implements ListEdit<Profile>, EditView<E>
     }
 
     public void deleteEntireList() {
-        Profiles = new ArrayList<Profile>;
+        Profiles = new ArrayList<Profile>();
     }
 
     public void addListElement(Profile profileToAdd) {
@@ -36,6 +38,10 @@ public class HomeView implements ListEdit<Profile>, EditView<E>
     }
 
     public void clickDeleteButton() {
+
+    }
+
+    public void clickEditButton() {
 
     }
 }

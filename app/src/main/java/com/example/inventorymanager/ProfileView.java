@@ -7,8 +7,8 @@ import android.widget.Button;
 public class ProfileView implements ListEdit<Location>
 {
     public Profile profile;
-    public CardView LocationsDisplayStyle;
-    public TextField changeNameTextField;
+//    public CardView LocationsDisplayStyle;
+//    public TextField changeNameTextField;
     public Button changeProfilePic;
     public Button makeBusiness;
     public Button makePersonal;
@@ -17,9 +17,11 @@ public class ProfileView implements ListEdit<Location>
     public boolean inEditMode;
 
     // Default constructor
-    public ProfileView()
+    public ProfileView(){
 
-    public void goToLocationView(Location) {
+    }
+
+    public void goToLocationView() {
 
     }
 
@@ -41,5 +43,9 @@ public class ProfileView implements ListEdit<Location>
 
     public void clickEditButton() {
         
+    }
+
+    public void deleteListElement(int index){
+
     }
 }

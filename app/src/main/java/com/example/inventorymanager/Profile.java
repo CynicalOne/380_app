@@ -1,7 +1,10 @@
 package com.example.inventorymanager;
 
+import android.location.Location;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Profile
 {
@@ -10,8 +13,9 @@ public class Profile
     public String businessOrPersonal;
     public boolean isBusiness;
     public ImageView profilePic;
+    public Location location;
 
-    ArrayList Locations = new Arraylist<Locations>;
+    ArrayList Locations = new ArrayList<Location>();
 
     //constructor
     public Profile() {
@@ -19,8 +23,8 @@ public class Profile
         this.key = -1;
         this.businessOrPersonal = "Company";
         this.isBusiness = true;
-        this.ImageView = null;
-        this.Locations = new ArrayList<Location>;
+        this.profilePic = null;
+        this.Locations = new ArrayList<Location>();
     }
 
     public void setProfileName(String newName) {
