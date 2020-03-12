@@ -3,6 +3,8 @@ package com.example.inventorymanager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class Location
 {
     public String locationName;
@@ -10,14 +12,14 @@ public class Location
     public ImageView locationPic;
     public String address;
     
-    public ArrayList<> Items;
+    public ArrayList<Item> Items;
 
     // Default constructor
     public Location() {
         this.locationName = "Name";
         this.key = -1;
         this.address = "Address";
-        this.Items = new ArrayList<Item>;
+        this.Items = new ArrayList<Item>();
     }
 
     public void setLocationName(String newName) {
