@@ -10,7 +10,7 @@ public class Location
     public ImageView locationPic;
     public String address;
     
-    public ArrayList Items;
+    public ArrayList<> Items;
 
     // Default constructor
     public Location() {
