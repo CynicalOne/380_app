@@ -50,6 +50,7 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        // fields in recyclerview cell
         public TextView name;
         public TextView subDesc;
 
