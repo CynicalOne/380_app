@@ -1,6 +1,7 @@
 package com.example.inventorymanager.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewAdapter.ViewHo
         return profileArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // fields in recyclerview cell
         public TextView name;
@@ -60,5 +61,18 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewAdapter.ViewHo
             name = itemView.findViewById(R.id.name);
             subDesc = itemView.findViewById(R.id.subdesc);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            Profile profile = profileArrayList.get(position);
+            /*
+            TODO: Intent sends data and switches to LocationView
+             */
+
+            //debug 
+            Log.d("clicked here", "onClick: " + profile.getProfileName());
+        }
     }
+
 }
