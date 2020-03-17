@@ -1,6 +1,7 @@
 package com.example.inventorymanager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
         //test arraylist examples
         profileArrayList = new ArrayList<>();
         profileArrayList.add(new Profile("David", "Personal"));
@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
         //init adapter and connect to arraylist
         adapter = new HomeViewAdapter(this, profileArrayList);
         recyclerView.setAdapter(adapter);
-
-
-
     }
+
+    //TODO: Make clickable cells go to LocationViewActivity
+
+    //TODO: Add button so user can create a profile (floating button?)
 }
