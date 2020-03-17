@@ -13,7 +13,8 @@ public class Profile
     public String businessOrPersonal;
     public boolean isBusiness;
     public ImageView profilePic;
-    public Location location;
+
+
 
     ArrayList Locations = new ArrayList<Location>();
 
@@ -27,6 +28,11 @@ public class Profile
         this.Locations = new ArrayList<Location>();
     }
 
+    public Profile(String profileName, String businessOrPersonal){
+        this.profileName = profileName;
+        this.businessOrPersonal = businessOrPersonal;
+    }
+
     public void setProfileName(String newName) {
         this.profileName = newName;
     }
@@ -38,5 +44,31 @@ public class Profile
     public void setBusinessOrPersonal(boolean business) {
         this.isBusiness = business;
     }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public String getBusinessOrPersonal() {
+        return businessOrPersonal;
+    }
+
+    public boolean isBusiness() {
+        return isBusiness;
+    }
+
+    public ImageView getProfilePic() {
+        return profilePic;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public Location location;
 
 }
