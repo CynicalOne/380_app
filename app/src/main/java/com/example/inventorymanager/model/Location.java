@@ -34,4 +34,20 @@ public class Location
     public void setAddress(String newAddress) {
         this.address = newAddress;
     }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public ImageView getLocationPic() {
+        return locationPic;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getKey() {
+        return key;
+    }
 }
