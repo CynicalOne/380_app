@@ -1,7 +1,6 @@
 package com.example.inventorymanager.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.inventorymanager.MainActivity;
-import com.example.inventorymanager.Profile;
+import com.example.inventorymanager.model.Profile;
 import com.example.inventorymanager.R;
 
 import java.util.ArrayList;

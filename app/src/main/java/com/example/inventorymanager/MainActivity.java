@@ -1,15 +1,13 @@
 package com.example.inventorymanager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.example.inventorymanager.adapters.HomeViewAdapter;
+import com.example.inventorymanager.model.Profile;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.inventorymanager;
+package com.example.inventorymanager.model;
 
 import android.widget.ImageView;
 

@@ -1,7 +1,8 @@
-package com.example.inventorymanager;
+package com.example.inventorymanager.model;
 
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.example.inventorymanager.model.Item;
 
 import java.util.ArrayList;
 
