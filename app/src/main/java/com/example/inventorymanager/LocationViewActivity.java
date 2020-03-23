@@ -25,6 +25,15 @@ public class LocationViewActivity extends AppCompatActivity {
         profilePic = findViewById(R.id.profilePicture);
         goToLocationButton = findViewById(R.id.goToLocationButton);
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            String nameRecieved = bundle.getString("name");
+            String descriptionRecieved = bundle.getString("description");
+
+            name.setText(nameRecieved);
+            description.setText(descriptionRecieved);
+        }
+
 
     }
 }
