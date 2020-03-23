@@ -1,4 +1,4 @@
-package com.example.inventorymanager;
+package com.example.inventorymanager.model;
 
 public interface ListEdit<T>{
     void deleteListElement(int index);

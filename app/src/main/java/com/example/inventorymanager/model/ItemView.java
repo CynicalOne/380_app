@@ -1,7 +1,5 @@
-package com.example.inventorymanager;
+package com.example.inventorymanager.model;
 
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Button;
 
 public class ItemView
