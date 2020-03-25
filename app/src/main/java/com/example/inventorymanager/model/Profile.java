@@ -65,10 +65,4 @@ public class Profile
         return profilePic;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public Location location;
-
 }
