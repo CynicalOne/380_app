@@ -31,7 +31,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_homeview_v2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Profiles");
+        getSupportActionBar().setTitle("Profiles");
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
