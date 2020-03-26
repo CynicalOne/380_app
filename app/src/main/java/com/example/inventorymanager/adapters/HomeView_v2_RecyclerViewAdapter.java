@@ -2,7 +2,6 @@ package com.example.inventorymanager.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,49 +10,46 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.inventorymanager.HomeviewV2Activity;
 import com.example.inventorymanager.LocationViewActivity;
-import com.example.inventorymanager.model.Profile;
 import com.example.inventorymanager.R;
+import com.example.inventorymanager.model.Profile;
 
 import java.util.ArrayList;
 
-public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewAdapter.ViewHolder> {
+public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeView_v2_RecyclerViewAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Profile> profileArrayList;
+    private ArrayList<Profile> profileList;
 
-    public HomeViewAdapter(Context context, ArrayList<Profile> profileArrayList) {
+    public HomeView_v2_RecyclerViewAdapter(Context context, ArrayList<Profile> profileList) {
         this.context = context;
-        this.profileArrayList = profileArrayList;
+        this.profileList = profileList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public HomeView_v2_RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.homeview_row, viewGroup, false);
         return new ViewHolder(view);
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomeView_v2_RecyclerViewAdapter.ViewHolder holder, int position) {
         // grab profile at index
-        Profile profile = profileArrayList.get(position);
+        Profile profile = profileList.get(position);
 
         //set name and sub description in recycler view
         holder.name.setText(profile.getProfileName());
         holder.subDesc.setText(profile.getBusinessOrPersonal());
-
     }
-
 
     @Override
     public int getItemCount() {
-        return profileArrayList.size();
+        return profileList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+    public class ViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
         // fields in recyclerview cell
         public TextView name;
         public TextView subDesc;
@@ -69,26 +65,17 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-
             // get location where user clicked
             int position = getAdapterPosition();
-            Profile profile = profileArrayList.get(position);
-//
-//            // send data to LocationViewActivity
-//            Intent intent = new Intent(context, LocationViewActivity.class);
-//            intent.putExtra("name", profile.getProfileName());
-//            intent.putExtra("description", profile.getBusinessOrPersonal());
-//
-//            // move to LocationViewActivity
-//            context.startActivity(intent);
+            Profile profile = profileList.get(position);
 
-            // For debugging the onClick will send to new homeview
-            Intent intent = new Intent(context, HomeviewV2Activity.class);
+            // send data to LocationViewActivity
+            Intent intent = new Intent(context, LocationViewActivity.class);
+            intent.putExtra("name", profile.getProfileName());
+            intent.putExtra("description", profile.getBusinessOrPersonal());
+
+            // move to LocationViewActivity
             context.startActivity(intent);
-
-            //debug
-            Log.d("clicked", "onClick: " + profile.getProfileName());
         }
     }
-
 }
