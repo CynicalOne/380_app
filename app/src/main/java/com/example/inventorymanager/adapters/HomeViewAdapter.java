@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.inventorymanager.HomeviewV2Activity;
 import com.example.inventorymanager.LocationViewActivity;
 import com.example.inventorymanager.model.Profile;
 import com.example.inventorymanager.R;
@@ -72,13 +73,17 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewAdapter.ViewHo
             // get location where user clicked
             int position = getAdapterPosition();
             Profile profile = profileArrayList.get(position);
+//
+//            // send data to LocationViewActivity
+//            Intent intent = new Intent(context, LocationViewActivity.class);
+//            intent.putExtra("name", profile.getProfileName());
+//            intent.putExtra("description", profile.getBusinessOrPersonal());
+//
+//            // move to LocationViewActivity
+//            context.startActivity(intent);
 
-            // send data to LocationViewActivity
-            Intent intent = new Intent(context, LocationViewActivity.class);
-            intent.putExtra("name", profile.getProfileName());
-            intent.putExtra("description", profile.getBusinessOrPersonal());
-
-            // move to LocationViewActivity
+            // For debugging the onClick will send to new homeview
+            Intent intent = new Intent(context, HomeviewV2Activity.class);
             context.startActivity(intent);
 
             //debug

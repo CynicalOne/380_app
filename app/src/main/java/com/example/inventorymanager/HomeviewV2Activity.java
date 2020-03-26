@@ -1,4 +1,4 @@
-package com.example.inventorymanager.model;
+package com.example.inventorymanager;
 
 import android.os.Bundle;
 
