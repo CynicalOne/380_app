@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         //test arraylist examples
         profileArrayList = new ArrayList<>();
-        profileArrayList.add(new Profile("David", "Personal"));
+        Profile david = new Profile("David", "Personal");
+        profileArrayList.add(david);
         profileArrayList.add(new Profile("Neal", "Business"));
         profileArrayList.add(new Profile("Kyle", "Personal"));
         profileArrayList.add(new Profile("Josh", "Business"));

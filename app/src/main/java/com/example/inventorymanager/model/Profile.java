@@ -14,8 +14,6 @@ public class Profile
     public boolean isBusiness;
     public ImageView profilePic;
 
-
-
     ArrayList Locations = new ArrayList<Location>();
 
     //constructor
