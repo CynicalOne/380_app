@@ -1,7 +1,9 @@
+package com.example.inventorymanager.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import java.io.Serializable;
+import java.io.*;
 
 import java.lang.reflect.Type;
 import com.google.gson.Gson;
@@ -16,7 +18,7 @@ public class SerializeData implements Serializable
 
     public void serializeProfiles(ArrayList<Profile> profiles) {
         try {
-            String jsonStr = gson.toJson(profiles);;
+            String jsonStr = gson.toJson(profiles);
             FileWriter writer = new FileWriter("profiles.json");
             writer.write(jsonStr);
             writer.close();
@@ -27,8 +29,11 @@ public class SerializeData implements Serializable
         }
     }
 
-    public Profile deserializeProfiles(String jsonStr) {
+    public ArrayList<Profile> deserializeProfiles() {
+        String file = "profiles.json";
+        Path path = Paths.get(file);
+        String jsonStr = Files.readString(path);
         ArrayList<Profile> profiles = gson.fromJson(jsonStr, profileListType);
-        return
+        return profiles;
     }
 }
