@@ -3,13 +3,17 @@ package com.example.inventorymanager.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
+ 
 import java.io.*;
 
 import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class SerializeData implements Serializable
+public class SerializeData
 {
     Gson gson = new Gson();
     Type profileListType = new TypeToken<ArrayList<Profile>>(){}.getType();
@@ -28,7 +32,7 @@ public class SerializeData implements Serializable
         }
     }
 
-    public ArrayList<Profile> deserializeProfiles() {
+    public ArrayList<Profile> deserializeProfiles(Context context) {
         String file = "profiles.json";
         String jsonStr = "";
         try {
