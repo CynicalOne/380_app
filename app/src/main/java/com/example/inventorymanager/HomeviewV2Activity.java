@@ -59,7 +59,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
         profileList.add(new Profile("Yasmeen", "Personal"));
 
         SerializeData cereal = new SerializeData();
-        cereal.serializeProfiles(profileList);
+        cereal.serializeProfiles(profileList, App.instance.getApplicationContext());
 
         //init adapter and connect to arraylist
         adapter = new HomeView_v2_RecyclerViewAdapter(this, profileList);
