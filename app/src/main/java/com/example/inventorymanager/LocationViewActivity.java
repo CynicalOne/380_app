@@ -33,7 +33,5 @@ public class LocationViewActivity extends AppCompatActivity {
             name.setText(nameRecieved);
             description.setText(descriptionRecieved);
         }
-
-
     }
 }
