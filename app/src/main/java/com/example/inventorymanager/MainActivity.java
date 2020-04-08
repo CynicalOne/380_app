@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //TODO: Make clickable cells go to LocationViewActivity
-    
+
 
     //TODO: Add button so user can create a profile (floating button?)
 }

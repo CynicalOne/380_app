@@ -1,6 +1,7 @@
 package com.example.inventorymanager.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.inventorymanager.Location_view2;
 import com.example.inventorymanager.model.Profile;
 import com.example.inventorymanager.R;
 
@@ -69,10 +71,10 @@ public class HomeViewAdapter extends RecyclerView.Adapter<HomeViewAdapter.ViewHo
             int position = getAdapterPosition();
             Profile profile = profileArrayList.get(position);
 
-//            Intent intent = new Intent(context, MainActivity.class);
+              Intent intent = new Intent(context, Location_view2.class);
 //            intent.putExtra("name", profile.getProfileName());
 //
-//            context.startActivity(intent);
+              context.startActivity(intent);
             /*
             TODO: Intent sends data and switches to LocationView
              */
