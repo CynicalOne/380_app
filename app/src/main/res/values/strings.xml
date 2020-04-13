@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">InventoryManager</string>
     <string name="title_activity_homeview_v2">HomeviewV2Activity</string>
+    <string name="create_new_profile">Create New Profile</string>
+    <string name="hint_name">Enter Name</string>
+    <string name="save_button">Save</string>
+    <string name="hint_description">Enter Description</string>
 </resources>
