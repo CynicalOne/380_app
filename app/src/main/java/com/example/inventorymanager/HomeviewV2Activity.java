@@ -1,20 +1,23 @@
 package com.example.inventorymanager;
 
-import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 
 import com.example.inventorymanager.adapters.HomeView_v2_RecyclerViewAdapter;
-import com.example.inventorymanager.model.Location;
 import com.example.inventorymanager.model.Profile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +63,8 @@ public class HomeviewV2Activity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
         //test arraylist examples
         profileList = new ArrayList<>();
         profileList.add(new Profile("David", "Personal"));
@@ -96,6 +101,13 @@ public class HomeviewV2Activity extends AppCompatActivity {
         dialog = builder.create();
         dialog.show();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_homeview, menu);
+        return true;
     }
 
 }

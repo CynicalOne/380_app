@@ -2,6 +2,8 @@ package com.example.inventorymanager.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,13 +37,28 @@ public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeVi
 
 
     @Override
-    public void onBindViewHolder(@NonNull HomeView_v2_RecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final HomeView_v2_RecyclerViewAdapter.ViewHolder holder, int position) {
         // grab profile at index
-        Profile profile = profileList.get(position);
+        final Profile profile = profileList.get(position);
 
         //set name and sub description in recycler view
         holder.name.setText(profile.getProfileName());
         holder.subDesc.setText(profile.getBusinessOrPersonal());
+
+//        //multi select, this is commented out because multideleting at once may be hard to do in a database!
+//        // if you want to remove long click feature, just remove onLongClick() and anywhere that says long!
+//        holder.name.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                onClick(v);
+//                return false;
+//            }
+//
+//            public void onClick(View v) {
+//                profile.setSelected(!profile.isSelected());
+//                holder.itemView.setBackgroundColor(profile.isSelected() ? Color.CYAN : Color.WHITE);
+//            }
+//        });
     }
 
     @Override
@@ -77,5 +94,7 @@ public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeVi
             // move to LocationViewActivity
             context.startActivity(intent);
         }
+
+
     }
 }
