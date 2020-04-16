@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/moreVertical"
+        android:id="@+id/selectInMenu"
         android:icon="@android:drawable/ic_media_play"
-        android:title="Select" /> <!--or whatever you called it -->
+        android:title="Select" />
+    <item
+        android:id="@+id/helpInMenu"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="Help" />
+    <item
+        android:id="@+id/meetTheTeamInMenu"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="Meet The Team!" />
     android:title="@string/more"
     app:showAsAction="ifRoom" />
 
