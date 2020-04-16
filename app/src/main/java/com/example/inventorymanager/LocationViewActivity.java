@@ -2,7 +2,10 @@ package com.example.inventorymanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +16,8 @@ public class LocationViewActivity extends AppCompatActivity {
     TextView description;
     ImageView profilePic;
     Button goToLocationButton;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +38,14 @@ public class LocationViewActivity extends AppCompatActivity {
             name.setText(nameRecieved);
             description.setText(descriptionRecieved);
         }
+
+        // Button goes to Location List Activity
+        goToLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getApplicationContext(), LocationListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
