@@ -39,6 +39,8 @@ public class LocationViewActivity extends AppCompatActivity {
             description.setText(descriptionRecieved);
         }
 
+        goToLocationButton.setText("Go To Locations");
+
         // Button goes to Location List Activity
         goToLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
