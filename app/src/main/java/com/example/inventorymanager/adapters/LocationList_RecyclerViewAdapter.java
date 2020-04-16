@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+import com.example.inventorymanager.ItemListActivity;
 import com.example.inventorymanager.LocationViewActivity;
 import com.example.inventorymanager.R;
 import com.example.inventorymanager.model.Location;
@@ -49,7 +50,7 @@ public class LocationList_RecyclerViewAdapter extends  RecyclerView.Adapter<Loca
         return locationArrayList.size();
     }
 
-    public class ViewHolderLocation extends RecyclerView.ViewHolder {
+    public class ViewHolderLocation extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView name;
         public TextView address;
@@ -57,8 +58,18 @@ public class LocationList_RecyclerViewAdapter extends  RecyclerView.Adapter<Loca
         public ViewHolderLocation(@NonNull View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
             name = itemView.findViewById(R.id.name);
             address = itemView.findViewById(R.id.subdesc);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+
+            Intent i = new Intent(context, ItemListActivity.class);
+
+            context.startActivity(i);
         }
     }
 }

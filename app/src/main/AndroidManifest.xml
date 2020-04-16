@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ItemListActivity"
+            android:label="@string/title_activity_item_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".LocationListActivity"
             android:label="@string/title_activity_location_list"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeviewV2Activity"
             android:label="@string/title_activity_homeview_v2"
