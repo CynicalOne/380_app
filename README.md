@@ -26,7 +26,6 @@ Kyle [https://github.com/kylechan19]
 * 0.0.1
     * Work in progress
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
 
 
 
