@@ -3,6 +3,7 @@ package com.example.inventorymanager;
 import android.graphics.Canvas;
 import android.os.Bundle;
 
+import com.example.inventorymanager.Persistence.DatabaseHandler_Profiles;
 import com.example.inventorymanager.adapters.HomeView_v2_RecyclerViewAdapter;
 import com.example.inventorymanager.model.Profile;
 import com.example.inventorymanager.model.SerializeData;
@@ -39,6 +40,9 @@ public class HomeviewV2Activity extends AppCompatActivity {
     private EditText profileNameEditText;
     private EditText descriptionEditText;
 
+    //db
+    private DatabaseHandler_Profiles databaseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,8 @@ public class HomeviewV2Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Profiles");
+
+        databaseHandler = new DatabaseHandler_Profiles(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +73,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
 
         //test arraylist examples
+<<<<<<< HEAD
         profileList = new ArrayList<>();
         profileList.add(new Profile("David", "Personal", profileList.size()));
         profileList.add(new Profile("Neal", "Business", profileList.size()));
@@ -76,6 +83,11 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
         SerializeData cereal = new SerializeData();
         cereal.serializeProfiles(profileList, this);
+=======
+        profileList = databaseHandler.getAllItems();
+
+
+>>>>>>> 9a7b92fcc8411b2717478f9a5ee2810276021eb5
 
         //init adapter and connect to arraylist
         adapter = new HomeView_v2_RecyclerViewAdapter(this, profileList);
@@ -92,11 +104,11 @@ public class HomeviewV2Activity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!profileNameEditText.getText().toString().isEmpty() && descriptionEditText.getText().toString().isEmpty()) {
-                    //save the item
+                if(!profileNameEditText.getText().toString().isEmpty()) {
+                    saveProfile(v);
                 }
                 else {
-                    Snackbar.make(v, "Empty fields", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v, "Empty fields bro", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
@@ -104,6 +116,21 @@ public class HomeviewV2Activity extends AppCompatActivity {
         builder.setView(view);
         dialog = builder.create();
         dialog.show();
+
+    }
+
+    private void saveProfile(View v) {
+        Profile profile = new Profile();
+
+        String newProfile = profileNameEditText.getText().toString().trim();
+        String newDescription = descriptionEditText.getText().toString().trim();
+
+        profile.setProfileName(newProfile);
+        profile.setBusinessOrPersonal(newDescription);
+
+        databaseHandler.addProfile(profile);
+
+        Snackbar.make(v, "Item Saved", Snackbar.LENGTH_SHORT).show();
 
     }
 
