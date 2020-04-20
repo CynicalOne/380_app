@@ -26,7 +26,7 @@ public class SerializeData
         locationJSONStr = gson.toJson(location)
         itemsJSONstr = gson.toJson(location.Items);
         Log.i(location.name + ":", jsonStr);
-        return new String[locationJSONStr, itemsJSONstr];
+        return new String[2] = {locationJSONStr, itemsJSONstr};
     }
 
     public Location deserializeLocation(String[] jsonStrs) {
