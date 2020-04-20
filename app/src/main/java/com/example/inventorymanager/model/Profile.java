@@ -13,6 +13,8 @@ public class Profile
     public String businessOrPersonal;
     public boolean isBusiness;
     public ImageView profilePic;
+    private boolean isSelected = false;
+
 
     ArrayList Locations = new ArrayList<Location>();
 
@@ -61,6 +63,15 @@ public class Profile
 
     public ImageView getProfilePic() {
         return profilePic;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+
+    public boolean isSelected() {
+        return isSelected;
     }
 
 }

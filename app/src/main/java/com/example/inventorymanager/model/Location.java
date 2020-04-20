@@ -23,6 +23,11 @@ public class Location
         this.Items = new ArrayList<Item>();
     }
 
+    public Location(String locationName, String address) {
+        this.locationName = locationName;
+        this.address = address;
+    }
+
     public void setLocationName(String newName) {
         this.locationName = newName;
     }
