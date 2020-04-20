@@ -16,48 +16,49 @@ import com.google.gson.reflect.TypeToken;
 public class SerializeData
 {
     Gson gson = new Gson();
-    Type profileListType = new TypeToken<ArrayList<Profile>>(){}.getType();
-    //Type locationListType = new TypeToken<ArrayList<Location>>(){}.getType();
-    //Type itemListType = new TypeToken<ArrayList<Item>>(){}.getType();
+    Type profileListType = new TypeToken<List<Profile>>(){}.getType();
+    Type locationListType = new TypeToken<List<Location>>(){}.getType();
+    Type itemListType = new TypeToken<List<Item>>(){}.getType();
 
-    public void serializeProfiles(ArrayList<Profile> profiles, Context context) {
+    public void serializeProfiles(List<Profile> profiles, Context context) {
+        File path = context.getFilesDir();
         try {
-            String jsonStr = gson.toJson(profiles);
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("profiles.json", Context.MODE_PRIVATE));
-            outputStreamWriter.write(jsonStr);
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
+            for (Profile profile : profiles) {  
+                String filename = "profile_" + Integer.toString(profile.getKey()) + ".json";
+                File file = new File(path, filename);
+                FileOutputStream stream = new FileOutputStream(file);
+                String jsonStr = gson.toJson(profile);
+                ArrayList<Location> tempLocList = profile.getLocations();
+                jsonStr += gson.toJson(tempLocList);
+                for (Location location : tempLocList) {
+                    jsonStr += gson.toJson(location.Items);
+                }
+                stream.write(jsonStr.getBytes());
+                Log.i(filename + ":", jsonStr);
+                stream.close();
+            }  
+        } catch (FileNotFoundException e) {
+            Log.e("HomeviewV2Activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("HomeviewV2Activity", "Can not read file: " + e.toString());
         }
     }
 
     public ArrayList<Profile> deserializeProfiles(Context context) {
-        String file = "profiles.json";
-        String jsonStr = "";
+        File path = context.getFilesDir();
+        File file = new File(path, "profiles.json");
+        int length = (int) file.length();
+        byte[] bytes = new byte[length];
         try {
-            InputStream inputStream = context.openFileInput(file);
-
-        if (inputStream != null) {
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String receiveString = "";
-            StringBuilder stringBuilder = new StringBuilder();
-
-            while ((receiveString = bufferedReader.readLine()) != null) {
-                stringBuilder.append("\n").append(receiveString);
-            }
-
-            inputStream.close();
-            jsonStr = stringBuilder.toString();
-            }
+            FileInputStream in = new FileInputStream(file);
+            in.read(bytes);
+            in.close();
+        } catch (FileNotFoundException e) {
+            Log.e("HomeviewV2Activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("HomeviewV2Activity", "Can not read file: " + e.toString());
         }
-        catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-        } 
-        catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
-        }
+        String jsonStr = new String(bytes);   
         ArrayList<Profile> profiles = gson.fromJson(jsonStr, profileListType);
         return profiles;
     }

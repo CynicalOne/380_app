@@ -68,11 +68,11 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
         //test arraylist examples
         profileList = new ArrayList<>();
-        profileList.add(new Profile("David", "Personal"));
-        profileList.add(new Profile("Neal", "Business"));
-        profileList.add(new Profile("Kyle", "Personal"));
-        profileList.add(new Profile("Josh", "Business"));
-        profileList.add(new Profile("Yasmeen", "Personal"));
+        profileList.add(new Profile("David", "Personal", profileList.size()));
+        profileList.add(new Profile("Neal", "Business", profileList.size()));
+        profileList.add(new Profile("Kyle", "Personal", profileList.size()));
+        profileList.add(new Profile("Josh", "Business", profileList.size()));
+        profileList.add(new Profile("Yasmeen", "Personal", profileList.size()));
 
         SerializeData cereal = new SerializeData();
         cereal.serializeProfiles(profileList, this);
