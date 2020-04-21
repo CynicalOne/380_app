@@ -1,13 +1,10 @@
 package com.example.inventorymanager.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
- 
-import java.io.*;
 
 import java.lang.reflect.Type;
 import com.google.gson.Gson;
@@ -25,7 +22,7 @@ public class SerializeData
         String locationJSONStr, itemsJSONstr;
         locationJSONStr = gson.toJson(location)
         itemsJSONstr = gson.toJson(location.Items);
-        Log.i(location.name + ":", jsonStr);
+        //Log.i(location.name + ":", jsonStr);
         return new String[2] = {locationJSONStr, itemsJSONstr};
     }
 
