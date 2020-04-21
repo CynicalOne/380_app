@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -71,14 +73,18 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
 
 
-        //test arraylist examples
-        profileList = databaseHandler.getAllItems();
 
+        profileList = databaseHandler.getAllItems();
+        //See in log whats in database
+        for(Profile p : profileList) {
+            Log.d("HomeviewArrayList", "onCreate: " + p.getProfileName());
+        }
 
 
         //init adapter and connect to arraylist
         adapter = new HomeView_v2_RecyclerViewAdapter(this, profileList);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private void createPopupDialog() {
@@ -93,6 +99,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!profileNameEditText.getText().toString().isEmpty()) {
                     saveProfile(v);
+                    //adapter.notifyDataSetChanged();
                 }
                 else {
                     Snackbar.make(v, "Empty fields bro", Snackbar.LENGTH_SHORT).show();
@@ -118,6 +125,14 @@ public class HomeviewV2Activity extends AppCompatActivity {
         databaseHandler.addProfile(profile);
 
         Snackbar.make(v, "Item Saved", Snackbar.LENGTH_SHORT).show();
+
+        //Close popup and delay screen to update
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 500);
 
     }
 

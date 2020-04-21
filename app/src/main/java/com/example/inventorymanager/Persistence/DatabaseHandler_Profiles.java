@@ -49,7 +49,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         contentValues.put(Constants.KEY_DESCRIPTION, profile.getBusinessOrPersonal());
 
         db.insert(Constants.TABLE_NAME, null, contentValues);
-        Log.d("ProfilehandlerDB", "added profile: ");
+        Log.d("ProfilehandlerDB", "added profile: " +profile.getProfileName());
     }
 
     public Profile getProfile(int id) {
