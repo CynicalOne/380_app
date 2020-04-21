@@ -59,6 +59,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createPopupDialog();
+                adapter.notifyDataSetChanged();
 //                Snackbar.make(view, "This will soon let user add a profile!!!",
 //                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
@@ -99,7 +100,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!profileNameEditText.getText().toString().isEmpty()) {
                     saveProfile(v);
-                    //adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
                 }
                 else {
                     Snackbar.make(v, "Empty fields bro", Snackbar.LENGTH_SHORT).show();
