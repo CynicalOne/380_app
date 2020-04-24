@@ -100,7 +100,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!profileNameEditText.getText().toString().isEmpty()) {
                     saveProfile(v);
-                    adapter.notifyDataSetChanged();
+                    adapter.updateProfileList(databaseHandler.getAllItems());
                 }
                 else {
                     Snackbar.make(v, "Empty fields bro", Snackbar.LENGTH_SHORT).show();
@@ -143,5 +143,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_homeview, menu);
         return true;
     }
+
+
 
 }

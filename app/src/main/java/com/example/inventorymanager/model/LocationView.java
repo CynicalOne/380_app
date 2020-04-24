@@ -15,7 +15,7 @@ public class LocationView implements ListEdit<Item>
     
     // methods from ListEdit interface
     public void deleteListElement(int index) {
-        location.Items.remove(index);
+        location.items.remove(index);
     }
 
     public void deleteEntireList() {
@@ -23,7 +23,7 @@ public class LocationView implements ListEdit<Item>
     }
 
     public void addListElement(Item itemToAdd) {
-        location.Items.add(itemToAdd);
+        location.items.add(itemToAdd);
     }
 
     public void clickAddButton() {

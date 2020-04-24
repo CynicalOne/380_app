@@ -2,6 +2,7 @@ package com.example.inventorymanager;
 
 import android.os.Bundle;
 
+import com.example.inventorymanager.Persistence.DatabaseHandler_Location;
 import com.example.inventorymanager.adapters.LocationList_RecyclerViewAdapter;
 import com.example.inventorymanager.model.Location;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -13,11 +14,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LocationListActivity extends AppCompatActivity {
 
@@ -33,6 +36,9 @@ public class LocationListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LocationList_RecyclerViewAdapter adapter;
 
+    //Database
+    DatabaseHandler_Location databaseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,8 @@ public class LocationListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Locations");
         setSupportActionBar(toolbar);
+
+        databaseHandler = new DatabaseHandler_Location(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -57,12 +65,7 @@ public class LocationListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Test values for arraylist
-        locationList = new ArrayList<>();
-        locationList.add(new Location("CSUN", "555 Nordhoff Ave"));
-        locationList.add(new Location("UCLA", "12321 ventura blvd"));
-        locationList.add(new Location("Strip club", "8347 Roscoe Blvd"));
-        locationList.add(new Location("Home", "34322 Morrison St"));
-        locationList.add(new Location("neals house", "999 woodley ave"));
+        locationList = databaseHandler.getAllItems();
 
         //init adapter and connect to arraylist
 //        adapter = new LocationList_RecyclerViewAdapter(getApplicationContext(), locationList);
@@ -76,18 +79,15 @@ public class LocationListActivity extends AppCompatActivity {
         builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.popup_addlocation_inlocationlist, null);
 
-        profileNameEditText = view.findViewById(R.id.profileName);
-        descriptionEditText = view.findViewById(R.id.description);
-        saveButton = view.findViewById(R.id.saveButton);
+        profileNameEditText = view.findViewById(R.id.locationName);
+        descriptionEditText = view.findViewById(R.id.descriptionLocationAddress);
+        saveButton = view.findViewById(R.id.saveButtonLocation);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!profileNameEditText.getText().toString().isEmpty() && descriptionEditText.getText().toString().isEmpty()) {
-                    //save the item
-                }
-                else {
-                    Snackbar.make(v, "Empty fields", Snackbar.LENGTH_SHORT).show();
-                }
+                saveLocation(v);
+                updateLocationList(databaseHandler.getAllItems());
+
             }
         });
 
@@ -95,6 +95,35 @@ public class LocationListActivity extends AppCompatActivity {
         dialog = builder.create();
         dialog.show();
 
+    }
+
+    private void saveLocation(View v) {
+        Location location = new Location();
+
+        String newLocation = profileNameEditText.getText().toString().trim();
+        String newAddress = descriptionEditText.getText().toString().trim();
+
+        location.setLocationName(newLocation);
+        location.setAddress(newAddress);
+
+        databaseHandler.addLocation(location);
+
+        Snackbar.make(v, "Location Saved", Snackbar.LENGTH_SHORT).show();
+
+        //Close popup and delay screen to update
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                dialog.dismiss();
+//            }
+//        }, 500);
+
+        adapter.notifyDataSetChanged();
+    }
+
+    public void updateLocationList(List<Location> newlist) {
+        locationList.clear();
+        locationList.addAll(newlist);
     }
 
 }

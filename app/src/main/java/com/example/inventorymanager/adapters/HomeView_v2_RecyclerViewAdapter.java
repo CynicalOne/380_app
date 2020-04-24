@@ -20,6 +20,7 @@ import com.example.inventorymanager.R;
 import com.example.inventorymanager.model.Profile;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeView_v2_RecyclerViewAdapter.ViewHolder> {
 
@@ -71,6 +72,12 @@ public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeVi
     @Override
     public int getItemCount() {
         return profileList.size();
+    }
+
+    public void updateProfileList(List<Profile> newlist) {
+        profileList.clear();
+        profileList.addAll(newlist);
+        this.notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
@@ -129,11 +136,14 @@ public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeVi
         }
 
 
+
         @Override
         public boolean onLongClick(View v) {
            // deleteProfile();
             return false;
         }
+
+
     }
 
 
