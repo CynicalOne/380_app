@@ -22,13 +22,12 @@ public class SerializeData
         String locationJSONStr, itemsJSONstr;
         locationJSONStr = gson.toJson(location)
         itemsJSONstr = gson.toJson(location.Items);
-        //Log.i(location.name + ":", jsonStr);
-        return new String[2] = {locationJSONStr, itemsJSONstr};
+        return new Pair(locationJSONStr, itemsJSONstr);
     }
 
-    public Location deserializeLocation(String[] jsonStrs) {
-        Location location = gson.fromJson(jsonStrs[0], LocationType);
-        location.Items = gson.fromJson(jsonStrs[1], itemListType);
+    public Location deserializeLocation(Pair pairStr) {
+        Location location = gson.fromJson(pairStr.pair[0], LocationType);
+        location.Items = gson.fromJson(pairStr.pair[1], itemListType);
         return location;
     }
 }
