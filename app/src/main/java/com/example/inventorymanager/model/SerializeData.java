@@ -18,7 +18,7 @@ public class SerializeData
     Type itemListType = new TypeToken<ArrayList<Item>>(){}.getType();
     Type LocationType = new TypeToken<Location>(){}.getType();
 
-    public String[] serializeLocation(Location location) {
+    public Pair serializeLocation(Location location) {
         String locationJSONStr, itemsJSONstr;
         locationJSONStr = gson.toJson(location)
         itemsJSONstr = gson.toJson(location.Items);
