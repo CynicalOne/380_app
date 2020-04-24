@@ -26,8 +26,8 @@ public class SerializeData
     }
 
     public Location deserializeLocation(Pair pairStr) {
-        Location location = gson.fromJson(pairStr.pair[0], LocationType);
-        location.Items = gson.fromJson(pairStr.pair[1], itemListType);
+        Location location = gson.fromJson(pairStr.serializedLocation, LocationType);
+        location.Items = gson.fromJson(pairStr.serializedItems, itemListType);
         return location;
     }
 }

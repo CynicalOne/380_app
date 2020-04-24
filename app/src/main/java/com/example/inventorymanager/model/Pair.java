@@ -6,10 +6,11 @@ import android.util.Log;
 
 public class Pair
 {
-    public String[] pair = new String[2];
+    public String serializedLocation;
+    public String serializedItems;
 
     public Pair (String strOne, String strTwo) {
-        pair[0] = strOne;
-        pair[1] = strTwo;
+        this.serailizedLocation = strOne;
+        this.serializedItems = strTwo;
     }
 }
