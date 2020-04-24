@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inventorymanager.R;
 import com.example.inventorymanager.model.Item;
+import com.example.inventorymanager.model.Location;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ItemList_RecyclerViewAdapter extends RecyclerView.Adapter<ItemList_RecyclerViewAdapter.ViewHolderItem> {
 
@@ -42,6 +44,12 @@ public class ItemList_RecyclerViewAdapter extends RecyclerView.Adapter<ItemList_
     public int getItemCount() {
         return itemArrayList.size();
     }
+
+//    public void updateLocationList(ArrayList<Location> newlist) {
+//        itemArrayList.clear();
+//        itemArrayList.addAll(newlist);
+//        this.notifyDataSetChanged();
+//    }
 
     public class ViewHolderItem extends RecyclerView.ViewHolder {
         public TextView name;
