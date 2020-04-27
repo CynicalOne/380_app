@@ -20,7 +20,9 @@ public class SerializeData
 
     public Pair serializeLocationAndItems(Location location) {
         String locationJSONStr, itemsJSONstr;
-        locationJSONStr = gson.toJson(location)
+        // Converts the location (without the Items ArrayList) into JSON format
+        locationJSONStr = gson.toJson(location);
+        // Converts the Location's Items ArrayList into JSON format
         itemsJSONstr = gson.toJson(location.Items);
         return new Pair(locationJSONStr, itemsJSONstr);
     }
