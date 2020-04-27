@@ -10,7 +10,7 @@ public class Pair
     public String serializedItems;
 
     public Pair (String strOne, String strTwo) {
-        this.serailizedLocation = strOne;
+        this.serializedLocation = strOne;
         this.serializedItems = strTwo;
     }
 }

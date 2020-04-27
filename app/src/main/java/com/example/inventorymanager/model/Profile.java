@@ -36,7 +36,7 @@ public class Profile
     public Profile(String profileName, String businessOrPersonal, int key){
         this.profileName = profileName;
         this.businessOrPersonal = businessOrPersonal;
-        this.key = key;
+        this.id = key;
     }
 
     public void setProfileName(String newName) {

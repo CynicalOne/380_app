@@ -23,13 +23,13 @@ public class SerializeData
         // Converts the location (without the Items ArrayList) into JSON format
         locationJSONStr = gson.toJson(location);
         // Converts the Location's Items ArrayList into JSON format
-        itemsJSONstr = gson.toJson(location.Items);
+        itemsJSONstr = gson.toJson(location.items);
         return new Pair(locationJSONStr, itemsJSONstr);
     }
 
     public Location deserializeLocationAndItems(Pair pairStr) {
         Location location = gson.fromJson(pairStr.serializedLocation, LocationType);
-        location.Items = gson.fromJson(pairStr.serializedItems, itemListType);
+        location.items = gson.fromJson(pairStr.serializedItems, itemListType);
         return location;
     }
 }
