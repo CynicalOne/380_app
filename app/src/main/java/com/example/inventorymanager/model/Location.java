@@ -13,14 +13,11 @@ public class Location
     public ImageView locationPic;
     public String address;
     
-    public ArrayList<Item> Items;
+    public ArrayList<Item> items;
 
     // Default constructor
     public Location() {
-        this.locationName = "Name";
-        this.key = -1;
-        this.address = "Address";
-        this.Items = new ArrayList<Item>();
+
     }
 
     public Location(String locationName, String address) {
@@ -28,31 +25,43 @@ public class Location
         this.address = address;
     }
 
-    public void setLocationName(String newName) {
-        this.locationName = newName;
-    }
-
-    public void setLocationPic(ImageView newImage) {
-        this.locationPic = newImage;
-    }
-
-    public void setAddress(String newAddress) {
-        this.address = newAddress;
-    }
-
     public String getLocationName() {
         return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 
     public ImageView getLocationPic() {
         return locationPic;
     }
 
+    public void setLocationPic(ImageView locationPic) {
+        this.locationPic = locationPic;
+    }
+
     public String getAddress() {
         return address;
     }
 
-    public int getKey() {
-        return key;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
 }

@@ -3,8 +3,10 @@ package com.example.inventorymanager;
 import android.graphics.Canvas;
 import android.os.Bundle;
 
+import com.example.inventorymanager.Persistence.DatabaseHandler_Profiles;
 import com.example.inventorymanager.adapters.HomeView_v2_RecyclerViewAdapter;
 import com.example.inventorymanager.model.Profile;
+import com.example.inventorymanager.model.SerializeData;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -16,6 +18,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -38,6 +42,9 @@ public class HomeviewV2Activity extends AppCompatActivity {
     private EditText profileNameEditText;
     private EditText descriptionEditText;
 
+    //db
+    private DatabaseHandler_Profiles databaseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +53,14 @@ public class HomeviewV2Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Profiles");
 
+        databaseHandler = new DatabaseHandler_Profiles(this);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createPopupDialog();
+                adapter.notifyDataSetChanged();
 //                Snackbar.make(view, "This will soon let user add a profile!!!",
 //                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
@@ -65,17 +75,18 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
 
 
-        //test arraylist examples
-        profileList = new ArrayList<>();
-        profileList.add(new Profile("David", "Personal"));
-        profileList.add(new Profile("Neal", "Business"));
-        profileList.add(new Profile("Kyle", "Personal"));
-        profileList.add(new Profile("Josh", "Business"));
-        profileList.add(new Profile("Yasmeen", "Personal"));
+
+        profileList = databaseHandler.getAllItems();
+        //See in log whats in database
+        for(Profile p : profileList) {
+            Log.d("HomeviewArrayList", "onCreate: " + p.getProfileName());
+        }
+
 
         //init adapter and connect to arraylist
         adapter = new HomeView_v2_RecyclerViewAdapter(this, profileList);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private void createPopupDialog() {
@@ -88,11 +99,12 @@ public class HomeviewV2Activity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!profileNameEditText.getText().toString().isEmpty() && descriptionEditText.getText().toString().isEmpty()) {
-                    //save the item
+                if(!profileNameEditText.getText().toString().isEmpty()) {
+                    saveProfile(v);
+                    adapter.updateProfileList(databaseHandler.getAllItems());
                 }
                 else {
-                    Snackbar.make(v, "Empty fields", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v, "Empty fields bro", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
@@ -103,11 +115,36 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
     }
 
+    private void saveProfile(View v) {
+        Profile profile = new Profile();
+
+        String newProfile = profileNameEditText.getText().toString().trim();
+        String newDescription = descriptionEditText.getText().toString().trim();
+
+        profile.setProfileName(newProfile);
+        profile.setBusinessOrPersonal(newDescription);
+
+        databaseHandler.addProfile(profile);
+
+        Snackbar.make(v, "Item Saved", Snackbar.LENGTH_SHORT).show();
+
+        //Close popup and delay screen to update
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 500);
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_homeview, menu);
         return true;
     }
+
+
 
 }
