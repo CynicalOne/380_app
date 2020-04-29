@@ -144,7 +144,4 @@ public class HomeviewV2Activity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_homeview, menu);
         return true;
     }
-
-
-
 }

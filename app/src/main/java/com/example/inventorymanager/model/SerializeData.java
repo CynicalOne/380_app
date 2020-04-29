@@ -19,7 +19,7 @@ public class SerializeData
     Type LocationType = new TypeToken<Location>(){}.getType();
     Type PairType = new TypeToken<Pair>(){}.getType();
 
-    public String serializeLocationAndItems(Location location) {
+    public static String serializeLocationAndItems(Location location) {
         String locationJSONStr, itemsJSONstr;
         // Converts the location (without the Items ArrayList) into JSON format
         locationJSONStr = gson.toJson(location);
@@ -31,7 +31,7 @@ public class SerializeData
         return gson.toJson(PairToSerialize);
     }
 
-    public Location deserializeLocationAndItems(String pairJSONStr) {
+    public static Location deserializeLocationAndItems(String pairJSONStr) {
         Pair pair = gson.fromJson(pairJSONStr, PairType);
         Location location = gson.fromJson(pair.serializedLocation, LocationType);
         location.Items = gson.fromJson(pair.serializedItems, itemListType);

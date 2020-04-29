@@ -128,5 +128,20 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
+    
+    public ArrayList<Location> deserializeLocations(ArrayList<String> pairStrs) {
+        ArrayList<Location> locations = new ArrayList<Location>();
+        for (String pairJSONStr : pairStrs) {
+            locations.add(deserializeLocationAndItems(pairJSONStr));
+        }
+        return locations;
+    }
 
+    public ArrayList<String> serializeLocations(ArrayList<Locations> locations) {
+        ArrayList<String> pairJSONStrs = new ArrayList<String>();
+        for (Location location : locations) {
+            pairJSONStrs.add(serializeLocationAndItems(location));
+        }
+        return pairJSONStrs;
+    }
 }
