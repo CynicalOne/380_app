@@ -1,6 +1,7 @@
 package com.example.inventorymanager.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inventorymanager.R;
 import com.example.inventorymanager.model.Item;
+import com.example.inventorymanager.itemView;
 
 import java.util.ArrayList;
 
@@ -43,29 +45,30 @@ public class ItemList_RecyclerViewAdapter extends RecyclerView.Adapter<ItemList_
         return itemArrayList.size();
     }
 
-    public class ViewHolderItem extends RecyclerView.ViewHolder {
+    public class ViewHolderItem extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView name;
         public TextView address;
 
-        public ViewHolderItem(@NonNull View itemView) {
-            super(itemView);
+        public ViewHolderItem(@NonNull View v) {
+            super(v);
 
-            name = itemView.findViewById(R.id.name);
-            address = itemView.findViewById(R.id.subdesc);
+
+            name = v.findViewById(R.id.name);
+            address = v.findViewById(R.id.subdesc);
+
+            v.setOnClickListener(this);
         }
-        /*
+
+
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
 
-            Intent i = new Intent(context, itemView.class);
+            Item item = itemArrayList.get(position);
+            Intent intent = new Intent(context, com.example.inventorymanager.itemView.class);
 
-            context.startActivity(i);
+            context.startActivity(intent);
         }
-
-         */
-
-
     }
 
 }
