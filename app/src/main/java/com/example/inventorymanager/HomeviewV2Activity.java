@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.inventorymanager.Persistence.DatabaseHandler_Profiles;
 import com.example.inventorymanager.adapters.HomeView_v2_RecyclerViewAdapter;
 import com.example.inventorymanager.model.Profile;
+import com.example.inventorymanager.model.SerializeData;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 

@@ -16,9 +16,7 @@ public class Profile
     private boolean isSelected = false;
 
 
-
-
-    ArrayList Locations = new ArrayList<Location>();
+    public ArrayList Locations = new ArrayList<Location>();
 
     //constructor
 
@@ -35,9 +33,10 @@ public class Profile
     public Profile() {
     }
 
-    public Profile(String profileName, String businessOrPersonal){
+    public Profile(String profileName, String businessOrPersonal, int key){
         this.profileName = profileName;
         this.businessOrPersonal = businessOrPersonal;
+        this.id = key;
     }
 
     public void setProfileName(String newName) {
@@ -48,6 +47,10 @@ public class Profile
         this.profilePic = newImage;
     }
 
+
+    public ArrayList<Location> getLocations() {
+        return Locations;
+    }
 
     public String getProfileName() {
         return profileName;
