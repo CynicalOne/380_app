@@ -29,7 +29,8 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         String CREATE_PROFILE_TABLE = "CREATE TABLE " + Constants.TABLE_NAME + "("
                 + Constants.KEY_ID + " Integer PRIMARY KEY,"
                 + Constants.KEY_PROFILE_NAME + " TEXT,"
-                + Constants.KEY_DESCRIPTION + " TEXT);";
+                + Constants.KEY_DESCRIPTION + " TEXT,"
+                + Constants.KEY_LOCATION_LIST + " TEXT);";
 
         db.execSQL(CREATE_PROFILE_TABLE);
     }
