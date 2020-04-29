@@ -17,19 +17,24 @@ public class SerializeData
     // Type locationListType = new TypeToken<ArrayList<Location>>(){}.getType();
     Type itemListType = new TypeToken<ArrayList<Item>>(){}.getType();
     Type LocationType = new TypeToken<Location>(){}.getType();
+    Type PairType = new TypeToken<Pair>(){}.getType();
 
-    public Pair serializeLocationAndItems(Location location) {
+    public String serializeLocationAndItems(Location location) {
         String locationJSONStr, itemsJSONstr;
         // Converts the location (without the Items ArrayList) into JSON format
         locationJSONStr = gson.toJson(location);
         // Converts the Location's Items ArrayList into JSON format
-        itemsJSONstr = gson.toJson(location.items);
-        return new Pair(locationJSONStr, itemsJSONstr);
+        itemsJSONstr = gson.toJson(location.Items);
+        // Create Pair object
+        Pair PairToSerialize = new Pair(locationJSONStr, itemsJSONstr);
+        // Return one string that can be stored in SQLite
+        return gson.toJson(PairToSerialize);
     }
 
-    public Location deserializeLocationAndItems(Pair pairStr) {
-        Location location = gson.fromJson(pairStr.serializedLocation, LocationType);
-        location.items = gson.fromJson(pairStr.serializedItems, itemListType);
+    public Location deserializeLocationAndItems(String pairJSONStr) {
+        Pair pair = gson.fromJson(pairJSONStr, PairType);
+        Location location = gson.fromJson(pair.serializedLocation, LocationType);
+        location.Items = gson.fromJson(pair.serializedItems, itemListType);
         return location;
     }
 }
