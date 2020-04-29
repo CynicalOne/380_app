@@ -53,5 +53,19 @@ public class ItemList_RecyclerViewAdapter extends RecyclerView.Adapter<ItemList_
             name = itemView.findViewById(R.id.name);
             address = itemView.findViewById(R.id.subdesc);
         }
+        /*
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+
+            Intent i = new Intent(context, itemView.class);
+
+            context.startActivity(i);
+        }
+
+         */
+
+
     }
+
 }

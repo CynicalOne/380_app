@@ -8,4 +8,8 @@
     <string name="title_activity_location_list">LocationListActivity</string>
     <string name="create_new_location">Create New Location</string>
     <string name="title_activity_item_list">ItemListActivity</string>
+
+    <string name="title_activity_item_view">itemView</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
