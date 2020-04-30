@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import com.example.inventorymanager.Util.Constants;
 import com.example.inventorymanager.model.Location;
 import com.example.inventorymanager.model.Profile;
+import com.example.inventorymanager.model.Location;
+import com.example.inventorymanager.model.SerializeData;
 
 import java.util.ArrayList;
 
@@ -132,7 +134,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
-    
+
     public ArrayList<Location> deserializeLocations(ArrayList<String> pairStrs) {
         ArrayList<Location> locations = new ArrayList<Location>();
         for (String pairJSONStr : pairStrs) {

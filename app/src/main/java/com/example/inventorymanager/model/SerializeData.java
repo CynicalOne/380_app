@@ -34,7 +34,7 @@ public class SerializeData
     public static Location deserializeLocationAndItems(String pairJSONStr) {
         Pair pair = gson.fromJson(pairJSONStr, PairType);
         Location location = gson.fromJson(pair.serializedLocation, LocationType);
-        location.Items = gson.fromJson(pair.serializedItems, itemListType);
+        location.items = gson.fromJson(pair.serializedItems, itemListType);
         return location;
     }
 }
