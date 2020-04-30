@@ -24,7 +24,7 @@ public class SerializeData
         // Converts the location (without the Items ArrayList) into JSON format
         locationJSONStr = gson.toJson(location);
         // Converts the Location's Items ArrayList into JSON format
-        itemsJSONstr = gson.toJson(location.Items);
+        itemsJSONstr = gson.toJson(location.items);
         // Create Pair object
         Pair PairToSerialize = new Pair(locationJSONStr, itemsJSONstr);
         // Return one string that can be stored in SQLite
