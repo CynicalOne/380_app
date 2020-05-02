@@ -4,9 +4,10 @@ import android.location.Location;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Profile
+public class Profile implements Serializable
 {
     public String profileName;
     public int id;
