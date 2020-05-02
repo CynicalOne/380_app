@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".BusinessOrPersonalMainActivity">
+        <activity android:name=".ViewBusinessItemsActivity"></activity>
+        <activity android:name=".BusinessOrPersonalMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,8 +28,7 @@
         <activity
             android:name=".HomeviewV2Activity"
             android:label="@string/title_activity_homeview_v2"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".LocationViewActivity" />
     </application>
 
