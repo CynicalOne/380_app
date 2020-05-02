@@ -111,12 +111,12 @@ public class LocationListActivity extends AppCompatActivity {
         Snackbar.make(v, "Location Saved", Snackbar.LENGTH_SHORT).show();
 
         //Close popup and delay screen to update
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                dialog.dismiss();
-//            }
-//        }, 500);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 500);
 
         adapter.notifyDataSetChanged();
     }

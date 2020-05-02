@@ -114,4 +114,10 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
+
+    public void deleteLocation(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Constants.TABLE__NAME_LOCATION, Constants.KEY_ID_LOCATION + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
 }

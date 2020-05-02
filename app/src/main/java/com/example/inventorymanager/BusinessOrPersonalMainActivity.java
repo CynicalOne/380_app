@@ -39,7 +39,7 @@ public class BusinessOrPersonalMainActivity extends AppCompatActivity {
         personalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HomeviewV2Activity.class);
+                Intent i = new Intent(getApplicationContext(), LocationListActivity.class);
                 startActivity(i);
             }
         });
