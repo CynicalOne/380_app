@@ -5,15 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.example.inventorymanager.Util.Constants;
+import com.example.inventorymanager.model.Location;
 import com.example.inventorymanager.model.Profile;
 
 import java.util.ArrayList;
+
 
 public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
 
@@ -128,5 +129,4 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
-
 }
