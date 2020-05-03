@@ -2,6 +2,7 @@ package com.example.inventorymanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 import com.example.inventorymanager.model.Profile;
 
@@ -74,8 +76,11 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
             try {
                 Bitmap bm = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 
+                String path = selectedImage.getPath();
+
                 ImageView imageView = (ImageView) findViewById(R.id.businessItemPic);
                 imageView.setImageBitmap(bm);
+                Toast.makeText(this, path, Toast.LENGTH_LONG).show();
             }
             catch (Exception e) {
                 e.printStackTrace();
