@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,6 +40,8 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
     // Getting item (actually its a profile) from recycler view
     Profile profile;
 
+    DatabaseHandler_Profiles db = new DatabaseHandler_Profiles(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,6 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
         Intent i = new Intent();
         profile = (Profile) getIntent().getSerializableExtra("businessItemSent");
 
-        DatabaseHandler_Profiles db = new DatabaseHandler_Profiles(this);
 
 
         // Connections
@@ -83,6 +85,8 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
 
                 String path = selectedImage.getPath();
                 profile.setImagePath(path);
+                db.updateProfile(profile);
+
 
                 ImageView imageView = (ImageView) findViewById(R.id.businessItemPic);
                 imageView.setImageBitmap(bm);

@@ -21,7 +21,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
     private Context context;
 
     public DatabaseHandler_Profiles(@Nullable Context context) {
-        super(context, Constants.DB_NAME, null, Constants.DB_VERSION);
+        super(context, Constants.DB_NAME, null, Constants.DB_VERSION + 1);
         this.context = context;
     }
 
@@ -94,7 +94,8 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         Cursor cursor = db.query(Constants.TABLE_NAME,
                 new String[]{Constants.KEY_ID,
                 Constants.KEY_PROFILE_NAME,
-                Constants.KEY_DESCRIPTION},
+                Constants.KEY_DESCRIPTION,
+                Constants.KEY_IMAGE_PATH},
                 null, null, null, null, null);
 
         if(cursor.moveToFirst()){
@@ -103,7 +104,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
                 profile.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID))));
                 profile.setProfileName(cursor.getString(cursor.getColumnIndex(Constants.KEY_PROFILE_NAME)));
                 profile.setBusinessOrPersonal(cursor.getString(cursor.getColumnIndex(Constants.KEY_DESCRIPTION)));
-                //profile.setImagePath(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGE_PATH)));
+                profile.setImagePath(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGE_PATH)));
 
                 profilesList.add(profile);
             } while (cursor.moveToNext());
