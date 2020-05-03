@@ -112,6 +112,7 @@ public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeVi
                 return;
             }
 
+
             // send data to LocationViewActivity
             Intent intent = new Intent(context, ViewBusinessItemsActivity.class);
             intent.putExtra("businessItemSent", profile);
