@@ -30,7 +30,8 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         String CREATE_PROFILE_TABLE = "CREATE TABLE " + Constants.TABLE_NAME + "("
                 + Constants.KEY_ID + " Integer PRIMARY KEY,"
                 + Constants.KEY_PROFILE_NAME + " TEXT,"
-                + Constants.KEY_DESCRIPTION + " TEXT);";
+                + Constants.KEY_DESCRIPTION + " TEXT,"
+                + Constants.KEY_IMAGE_PATH + " TEXT);";
 
         db.execSQL(CREATE_PROFILE_TABLE);
     }
@@ -49,6 +50,10 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         contentValues.put(Constants.KEY_PROFILE_NAME, profile.getProfileName());
         contentValues.put(Constants.KEY_DESCRIPTION, profile.getBusinessOrPersonal());
 
+        if(profile.getImagePath() != null) {
+            contentValues.put(Constants.KEY_IMAGE_PATH, profile.getImagePath());
+        }
+
         db.insert(Constants.TABLE_NAME, null, contentValues);
         Log.d("ProfilehandlerDB", "added profile: " +profile.getProfileName());
     }
@@ -59,7 +64,8 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         Cursor cursor = db.query(Constants.TABLE_NAME,
                 new String[]{Constants.KEY_ID,
                         Constants.KEY_PROFILE_NAME,
-                        Constants.KEY_DESCRIPTION},
+                        Constants.KEY_DESCRIPTION,
+                        Constants.KEY_IMAGE_PATH},
                 Constants.KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -72,6 +78,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
             profile.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID))));
             profile.setProfileName(cursor.getString(cursor.getColumnIndex(Constants.KEY_PROFILE_NAME)));
             profile.setBusinessOrPersonal(cursor.getString(cursor.getColumnIndex(Constants.KEY_DESCRIPTION)));
+            profile.setImagePath(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGE_PATH)));
         }
 
 
@@ -96,6 +103,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
                 profile.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID))));
                 profile.setProfileName(cursor.getString(cursor.getColumnIndex(Constants.KEY_PROFILE_NAME)));
                 profile.setBusinessOrPersonal(cursor.getString(cursor.getColumnIndex(Constants.KEY_DESCRIPTION)));
+                //profile.setImagePath(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGE_PATH)));
 
                 profilesList.add(profile);
             } while (cursor.moveToNext());
@@ -110,6 +118,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Constants.KEY_PROFILE_NAME, profile.getProfileName());
         contentValues.put(Constants.KEY_DESCRIPTION, profile.getBusinessOrPersonal());
+        contentValues.put(Constants.KEY_IMAGE_PATH, profile.getImagePath());
 
         //update
         return db.update(Constants.TABLE_NAME, contentValues, Constants.KEY_ID + "=?", new String[]{String.valueOf(profile.getId())});
@@ -128,5 +137,11 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(countQuery, null);
 
         return cursor.getCount();
+    }
+
+    public void clearDatabase(String TABLE_NAME) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String clearDBQuery = "DELETE FROM "+TABLE_NAME;
+        db.execSQL(clearDBQuery);
     }
 }

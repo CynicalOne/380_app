@@ -119,6 +119,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
         profile.setProfileName(newProfile);
         profile.setBusinessOrPersonal(newDescription);
+        profile.setImagePath("");
 
         databaseHandler.addProfile(profile);
 
