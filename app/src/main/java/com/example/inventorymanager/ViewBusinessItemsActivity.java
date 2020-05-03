@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.provider.MediaStore;
 import android.widget.Toast;
 
+import com.example.inventorymanager.Persistence.DatabaseHandler_Profiles;
+import com.example.inventorymanager.Util.Constants;
 import com.example.inventorymanager.model.Profile;
 
 import java.io.File;
@@ -35,7 +37,7 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
 
     // Getting item (actually its a profile) from recycler view
-   // Profile profile;
+    Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,10 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
 
         //Get Profile from list
         Intent i = new Intent();
-        Profile profile = (Profile) getIntent().getSerializableExtra("businessItemSent");
+        profile = (Profile) getIntent().getSerializableExtra("businessItemSent");
+
+        DatabaseHandler_Profiles db = new DatabaseHandler_Profiles(this);
+
 
         // Connections
         nameOfBusinessItem = findViewById(R.id.nameOfBusinessItem);
@@ -77,10 +82,11 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
                 Bitmap bm = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 
                 String path = selectedImage.getPath();
+                profile.setImagePath(path);
 
                 ImageView imageView = (ImageView) findViewById(R.id.businessItemPic);
                 imageView.setImageBitmap(bm);
-                Toast.makeText(this, path, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, profile.getImagePath() + "huh", Toast.LENGTH_LONG).show();
             }
             catch (Exception e) {
                 e.printStackTrace();

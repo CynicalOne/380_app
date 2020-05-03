@@ -17,6 +17,7 @@ public class Profile implements Serializable
     private boolean isSelected = false;
 
     ImageView picture;
+    String imagePath;
 
 
     public ArrayList Locations = new ArrayList<Location>();
@@ -48,6 +49,14 @@ public class Profile implements Serializable
         this.profileName = profileName;
         this.businessOrPersonal = businessOrPersonal;
         this.id = key;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public void setProfileName(String newName) {

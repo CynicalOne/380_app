@@ -11,11 +11,11 @@ public class Constants {
     public static final String DB_NAME = "profileListDB";
     public static final String TABLE_NAME = "profile_tbl";
 
-    //Table Columns for profiles
+    //Table Columns for profiles (business itemslul)
     public static final String KEY_ID = "id";
     public static final String KEY_PROFILE_NAME = "profile_name";
     public static final String KEY_DESCRIPTION = "description";
-    public static final String KEY_LOCATION_LIST = "locationList";
+    public static final String KEY_IMAGE_PATH = "image_path";
 
 
     //Locations
