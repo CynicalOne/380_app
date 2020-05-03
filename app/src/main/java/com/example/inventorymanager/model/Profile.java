@@ -16,6 +16,8 @@ public class Profile implements Serializable
     public ImageView profilePic;
     private boolean isSelected = false;
 
+    ImageView picture;
+
 
     public ArrayList Locations = new ArrayList<Location>();
 
@@ -29,6 +31,14 @@ public class Profile implements Serializable
         this.profilePic = profilePic;
         this.isSelected = isSelected;
         Locations = locations;
+    }
+
+    public ImageView getPicture() {
+        return picture;
+    }
+
+    public void setPicture(ImageView picture) {
+        this.picture = picture;
     }
 
     public Profile() {

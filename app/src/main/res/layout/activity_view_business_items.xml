@@ -22,4 +22,21 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/businessItemPic"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:src="@color/red" />
+
+    <Button
+        android:id="@+id/setImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 </LinearLayout>
