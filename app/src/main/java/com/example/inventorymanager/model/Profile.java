@@ -4,9 +4,10 @@ import android.location.Location;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Profile
+public class Profile implements Serializable
 {
     public String profileName;
     public int id;
@@ -14,6 +15,9 @@ public class Profile
     //public boolean isBusiness;
     public ImageView profilePic;
     private boolean isSelected = false;
+
+    ImageView picture;
+    String imagePath;
 
 
     public ArrayList Locations = new ArrayList<Location>();
@@ -30,6 +34,14 @@ public class Profile
         Locations = locations;
     }
 
+    public ImageView getPicture() {
+        return picture;
+    }
+
+    public void setPicture(ImageView picture) {
+        this.picture = picture;
+    }
+
     public Profile() {
     }
 
@@ -37,6 +49,14 @@ public class Profile
         this.profileName = profileName;
         this.businessOrPersonal = businessOrPersonal;
         this.id = key;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public void setProfileName(String newName) {
