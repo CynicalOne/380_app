@@ -121,6 +121,8 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         contentValues.put(Constants.KEY_DESCRIPTION, profile.getBusinessOrPersonal());
         contentValues.put(Constants.KEY_IMAGE_PATH, profile.getImagePath());
 
+        Log.d("ProfilehandlerDB", "added image: " +profile.getImagePath());
+
         //update
         return db.update(Constants.TABLE_NAME, contentValues, Constants.KEY_ID + "=?", new String[]{String.valueOf(profile.getId())});
     }
