@@ -38,5 +38,131 @@
         android:id="@+id/setImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Change Image" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="Serial:"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/serial"
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:ems="10"
+            android:hint="Enter Serial"
+            android:inputType="textPersonName" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp">
+
+        <TextView
+            android:id="@+id/modelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="Model:"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/Model"
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:ems="10"
+            android:hint="Enter Model Number"
+            android:inputType="textPersonName" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp">
+
+        <TextView
+            android:id="@+id/textquantiy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="Quantity:"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:ems="10"
+            android:hint="Enter Quantity"
+            android:inputType="textPersonName" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp">
+
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="Price:"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/Price"
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:ems="10"
+            android:hint="Enter Price"
+            android:inputType="textPersonName" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp">
+
+        <TextView
+            android:id="@+id/datetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="D.O.P."
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+    </RelativeLayout>
+
 </LinearLayout>
