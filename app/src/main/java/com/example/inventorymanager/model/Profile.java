@@ -9,15 +9,20 @@ import java.util.ArrayList;
 
 public class Profile implements Serializable
 {
-    public String profileName;
+    private String profileName;
     public int id;
-    public String businessOrPersonal;
-    //public boolean isBusiness;
+    private String businessOrPersonal;
+
     public ImageView profilePic;
     private boolean isSelected = false;
 
     ImageView picture;
     String imagePath;
+
+    private String serialNo;
+    private String model;
+    private double price;
+    private String dateOfPurchase;
 
 
     public ArrayList Locations = new ArrayList<Location>();

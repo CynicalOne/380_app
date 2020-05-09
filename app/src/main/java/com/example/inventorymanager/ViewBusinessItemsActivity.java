@@ -31,12 +31,20 @@ import java.io.File;
 public class ViewBusinessItemsActivity extends AppCompatActivity {
 
     //Items are actually profiles lol
-
     TextView nameOfBusinessItem;
     TextView descriptionOfBusinessItem;
 
     ImageView image;
     Button setImageButton;
+
+    //Editables
+    EditText serialEdit;
+    EditText modelEdit;
+    EditText quantityEdit;
+    EditText priceEdit;
+    TextView dateOfPurchase;
+
+    Button saveButton;
 
     // Image request code
     private static int RESULT_LOAD_IMAGE = 1;
@@ -63,6 +71,13 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
         image = findViewById(R.id.businessItemPic);
         setImageButton = findViewById(R.id.setImage);
 
+        serialEdit = findViewById(R.id.serialEditText);
+        modelEdit = findViewById(R.id.modelEditText);
+        quantityEdit = findViewById(R.id.priceEditText);
+        dateOfPurchase = findViewById(R.id.dateOfPurchase);
+
+        saveButton = findViewById(R.id.saveButton);
+
         // Set textview to match item
         nameOfBusinessItem.setText(profile.getProfileName());
         descriptionOfBusinessItem.setText(profile.getBusinessOrPersonal());
@@ -80,6 +95,12 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
             }
         });
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateBusinessItem(profile);
+            }
+        });
 
     }
 
@@ -95,10 +116,6 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
                 String path = selectedImage.getPath();
                 profile.setImagePath(path);
                 db.updateProfile(profile);
-                descriptionOfBusinessItem.setText(path);
-
-
-
 
                 ImageView imageView = (ImageView) findViewById(R.id.businessItemPic);
                 imageView.setImageBitmap(bm);
@@ -107,6 +124,12 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
             catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void updateBusinessItem(Profile profile) {
+        if(quantityEdit.toString().isEmpty() || modelEdit.toString().isEmpty() || serialEdit.toString().isEmpty() || priceEdit.toString().isEmpty()) {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_LONG).show();
         }
 
     }

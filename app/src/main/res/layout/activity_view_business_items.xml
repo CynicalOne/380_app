@@ -42,10 +42,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="84dp">
+        android:layout_height="70dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/serialTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -54,7 +54,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/serial"
+            android:id="@+id/serialEditText"
             android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -68,7 +68,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="84dp">
+        android:layout_height="70dp">
 
         <TextView
             android:id="@+id/modelText"
@@ -80,7 +80,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/Model"
+            android:id="@+id/modelEditText"
             android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -94,10 +94,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="84dp">
+        android:layout_height="70dp">
 
         <TextView
-            android:id="@+id/textquantiy"
+            android:id="@+id/quantityTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -106,7 +106,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/quantity"
+            android:id="@+id/quantityEditText"
             android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -120,10 +120,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="84dp">
+        android:layout_height="70dp">
 
         <TextView
-            android:id="@+id/textview3"
+            android:id="@+id/priceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -132,7 +132,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/Price"
+            android:id="@+id/priceEditText"
             android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -146,23 +146,23 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="84dp">
+        android:layout_height="70dp">
 
         <TextView
-            android:id="@+id/datetext"
+            android:id="@+id/dateOfPurchase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:text="D.O.P."
             android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+
 
 </LinearLayout>
