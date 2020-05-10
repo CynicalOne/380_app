@@ -24,7 +24,7 @@ Kyle [https://github.com/kylechan19]
 ## Release History
 
 * 0.0.1
-    * Work in progress
+    * First release, project due on May 13, 2020
 
 
 
