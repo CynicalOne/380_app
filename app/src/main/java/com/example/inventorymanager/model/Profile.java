@@ -9,15 +9,21 @@ import java.util.ArrayList;
 
 public class Profile implements Serializable
 {
-    public String profileName;
+    private String profileName;
     public int id;
-    public String businessOrPersonal;
-    //public boolean isBusiness;
+    private String businessOrPersonal;
+
     public ImageView profilePic;
     private boolean isSelected = false;
 
     ImageView picture;
     String imagePath;
+
+    public String serialNo;
+    private String model;
+    private int quantity = 0;
+    private double price;
+    private String dateOfPurchase;
 
 
     public ArrayList Locations = new ArrayList<Location>();
@@ -49,6 +55,46 @@ public class Profile implements Serializable
         this.profileName = profileName;
         this.businessOrPersonal = businessOrPersonal;
         this.id = key;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        this.serialNo = serialNo;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getDateOfPurchase() {
+        return dateOfPurchase;
+    }
+
+    public void setDateOfPurchase(String dateOfPurchase) {
+        this.dateOfPurchase = dateOfPurchase;
     }
 
     public String getImagePath() {

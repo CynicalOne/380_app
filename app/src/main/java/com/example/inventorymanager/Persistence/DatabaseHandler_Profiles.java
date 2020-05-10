@@ -13,7 +13,9 @@ import com.example.inventorymanager.Util.Constants;
 import com.example.inventorymanager.model.Location;
 import com.example.inventorymanager.model.Profile;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
@@ -21,7 +23,7 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
     private Context context;
 
     public DatabaseHandler_Profiles(@Nullable Context context) {
-        super(context, Constants.DB_NAME, null, Constants.DB_VERSION + 1);
+        super(context, Constants.DB_NAME, null, Constants.DB_VERSION + 1 + 1);
         this.context = context;
     }
 
@@ -31,7 +33,12 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
                 + Constants.KEY_ID + " Integer PRIMARY KEY,"
                 + Constants.KEY_PROFILE_NAME + " TEXT,"
                 + Constants.KEY_DESCRIPTION + " TEXT,"
-                + Constants.KEY_IMAGE_PATH + " TEXT);";
+                + Constants.KEY_IMAGE_PATH + " TEXT,"
+                + Constants.KEY_SERIAL_NUMBER + " TEXT,"
+                + Constants.KEY_MODEL + " TEXT, "
+                + Constants.KEY_QUANTITY + " INTEGER,"
+                + Constants.KEY_PRICE + " REAL,"
+                + Constants.KEY_DATE + " LONG);";
 
         db.execSQL(CREATE_PROFILE_TABLE);
     }
@@ -52,6 +59,11 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
 
         if(profile.getImagePath() != null) {
             contentValues.put(Constants.KEY_IMAGE_PATH, profile.getImagePath());
+            contentValues.put(Constants.KEY_SERIAL_NUMBER, profile.getSerialNo());
+            contentValues.put(Constants.KEY_MODEL, profile.getModel());
+            contentValues.put(Constants.KEY_QUANTITY, profile.getQuantity());
+            contentValues.put(Constants.KEY_PRICE, profile.getPrice());
+            contentValues.put(Constants.KEY_DATE, java.lang.System.currentTimeMillis());
         }
 
         db.insert(Constants.TABLE_NAME, null, contentValues);
@@ -65,7 +77,12 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
                 new String[]{Constants.KEY_ID,
                         Constants.KEY_PROFILE_NAME,
                         Constants.KEY_DESCRIPTION,
-                        Constants.KEY_IMAGE_PATH},
+                        Constants.KEY_IMAGE_PATH,
+                        Constants.KEY_SERIAL_NUMBER,
+                        Constants.KEY_MODEL,
+                        Constants.KEY_QUANTITY,
+                        Constants.KEY_PRICE,
+                        Constants.KEY_DATE},
                 Constants.KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -79,6 +96,15 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
             profile.setProfileName(cursor.getString(cursor.getColumnIndex(Constants.KEY_PROFILE_NAME)));
             profile.setBusinessOrPersonal(cursor.getString(cursor.getColumnIndex(Constants.KEY_DESCRIPTION)));
             profile.setImagePath(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGE_PATH)));
+            profile.setSerialNo(cursor.getString(cursor.getColumnIndex(Constants.KEY_SERIAL_NUMBER)));
+            profile.setModel(cursor.getString(cursor.getColumnIndex(Constants.KEY_MODEL)));
+            profile.setQuantity(cursor.getInt(cursor.getColumnIndex(Constants.KEY_QUANTITY)));
+            profile.setPrice(cursor.getDouble(cursor.getColumnIndex(Constants.KEY_PRICE)));
+
+            //Convert Time (long) to string
+            DateFormat dateFormat = DateFormat.getDateInstance();
+            String format = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE))));
+            profile.setDateOfPurchase(format);
         }
 
 
@@ -95,7 +121,12 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
                 new String[]{Constants.KEY_ID,
                 Constants.KEY_PROFILE_NAME,
                 Constants.KEY_DESCRIPTION,
-                Constants.KEY_IMAGE_PATH},
+                Constants.KEY_IMAGE_PATH,
+                Constants.KEY_SERIAL_NUMBER,
+                Constants.KEY_MODEL,
+                Constants.KEY_QUANTITY,
+                Constants.KEY_PRICE,
+                Constants.KEY_DATE},
                 null, null, null, null, null);
 
         if(cursor.moveToFirst()){
@@ -105,6 +136,16 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
                 profile.setProfileName(cursor.getString(cursor.getColumnIndex(Constants.KEY_PROFILE_NAME)));
                 profile.setBusinessOrPersonal(cursor.getString(cursor.getColumnIndex(Constants.KEY_DESCRIPTION)));
                 profile.setImagePath(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGE_PATH)));
+                profile.setSerialNo(cursor.getString(cursor.getColumnIndex(Constants.KEY_SERIAL_NUMBER)));
+                profile.setModel(cursor.getString(cursor.getColumnIndex(Constants.KEY_MODEL)));
+                profile.setQuantity(cursor.getInt(cursor.getColumnIndex(Constants.KEY_QUANTITY)));
+                profile.setPrice(cursor.getDouble(cursor.getColumnIndex(Constants.KEY_PRICE)));
+
+                //Date again
+                //Convert Time (long) to string
+                DateFormat dateFormat = DateFormat.getDateInstance();
+                String format = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE))));
+                profile.setDateOfPurchase(format);
 
                 profilesList.add(profile);
             } while (cursor.moveToNext());
@@ -120,8 +161,13 @@ public class DatabaseHandler_Profiles extends SQLiteOpenHelper {
         contentValues.put(Constants.KEY_PROFILE_NAME, profile.getProfileName());
         contentValues.put(Constants.KEY_DESCRIPTION, profile.getBusinessOrPersonal());
         contentValues.put(Constants.KEY_IMAGE_PATH, profile.getImagePath());
+        contentValues.put(Constants.KEY_SERIAL_NUMBER, profile.getSerialNo());
+        contentValues.put(Constants.KEY_MODEL, profile.getModel());
+        contentValues.put(Constants.KEY_QUANTITY, profile.getQuantity());
+        contentValues.put(Constants.KEY_PRICE, profile.getPrice());
+        contentValues.put(Constants.KEY_DATE, java.lang.System.currentTimeMillis());
 
-        Log.d("ProfilehandlerDB", "added image: " +profile.getImagePath());
+        Log.d("ProfilehandlerDB", "added serial: " + profile.getSerialNo());
 
         //update
         return db.update(Constants.TABLE_NAME, contentValues, Constants.KEY_ID + "=?", new String[]{String.valueOf(profile.getId())});

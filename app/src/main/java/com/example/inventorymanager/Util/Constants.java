@@ -16,6 +16,11 @@ public class Constants {
     public static final String KEY_PROFILE_NAME = "profile_name";
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE_PATH = "image_path";
+    public static final String KEY_SERIAL_NUMBER = "serialno";
+    public static final String KEY_MODEL = "model";
+    public static final String KEY_QUANTITY = "qty";
+    public static final String KEY_PRICE = "price";
+    public static final String KEY_DATE = "date_of_purchase";
 
 
     //Locations
