@@ -1,4 +1,4 @@
-# Inventory Manager
+# Trackoholic
 > Tracks inventory whether it be for personal usage or in a warehouse.
 
 
