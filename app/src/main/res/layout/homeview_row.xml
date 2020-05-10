@@ -42,23 +42,15 @@
                 android:text="subdescription"
                 android:textSize="15sp" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                app:srcCompat="@android:drawable/ic_media_play"
-                android:layout_alignParentRight="true" />
-
             <Button
                 android:id="@+id/deleteButton"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:background="@android:drawable/ic_delete">
-
-            </Button>
+                android:layout_centerInParent="true"
+                android:background="@android:drawable/ic_menu_delete"
+                android:backgroundTint="@color/red"></Button>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

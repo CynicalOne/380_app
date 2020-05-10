@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.inventorymanager.LocationViewActivity;
 import com.example.inventorymanager.Persistence.DatabaseHandler_Profiles;
 import com.example.inventorymanager.R;
+import com.example.inventorymanager.ViewBusinessItemsActivity;
 import com.example.inventorymanager.model.Profile;
 
 import java.util.ArrayList;
@@ -111,10 +112,10 @@ public class HomeView_v2_RecyclerViewAdapter extends RecyclerView.Adapter<HomeVi
                 return;
             }
 
+
             // send data to LocationViewActivity
-            Intent intent = new Intent(context, LocationViewActivity.class);
-            intent.putExtra("name", profile.getProfileName());
-            intent.putExtra("description", profile.getBusinessOrPersonal());
+            Intent intent = new Intent(context, ViewBusinessItemsActivity.class);
+            intent.putExtra("businessItemSent", profile);
 
             // move to LocationViewActivity
             context.startActivity(intent);

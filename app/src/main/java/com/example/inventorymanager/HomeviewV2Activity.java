@@ -1,20 +1,16 @@
 package com.example.inventorymanager;
 
-import android.graphics.Canvas;
 import android.os.Bundle;
 
 import com.example.inventorymanager.Persistence.DatabaseHandler_Profiles;
 import com.example.inventorymanager.adapters.HomeView_v2_RecyclerViewAdapter;
 import com.example.inventorymanager.model.Profile;
-import com.example.inventorymanager.model.SerializeData;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -87,6 +83,8 @@ public class HomeviewV2Activity extends AppCompatActivity {
         adapter = new HomeView_v2_RecyclerViewAdapter(this, profileList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
     }
 
     private void createPopupDialog() {
@@ -123,6 +121,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
 
         profile.setProfileName(newProfile);
         profile.setBusinessOrPersonal(newDescription);
+        profile.setImagePath("");
 
         databaseHandler.addProfile(profile);
 
@@ -144,7 +143,4 @@ public class HomeviewV2Activity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_homeview, menu);
         return true;
     }
-
-
-
 }
