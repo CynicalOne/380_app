@@ -83,6 +83,8 @@ public class HomeviewV2Activity extends AppCompatActivity {
         adapter = new HomeView_v2_RecyclerViewAdapter(this, profileList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
     }
 
     private void createPopupDialog() {

@@ -27,6 +27,7 @@ import com.example.inventorymanager.model.Profile;
 
 
 import java.io.File;
+import java.text.NumberFormat;
 
 public class ViewBusinessItemsActivity extends AppCompatActivity {
 
@@ -64,7 +65,6 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
         profile = (Profile) getIntent().getSerializableExtra("businessItemSent");
 
 
-
         // Connections
         nameOfBusinessItem = findViewById(R.id.nameOfBusinessItem);
         descriptionOfBusinessItem = findViewById(R.id.descriptionOfBusinessItem);
@@ -73,7 +73,8 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
 
         serialEdit = findViewById(R.id.serialEditText);
         modelEdit = findViewById(R.id.modelEditText);
-        quantityEdit = findViewById(R.id.priceEditText);
+        quantityEdit = findViewById(R.id.quantityEditText);
+        priceEdit = findViewById(R.id.priceEditText);
         dateOfPurchase = findViewById(R.id.dateOfPurchase);
 
         saveButton = findViewById(R.id.saveButton);
@@ -81,6 +82,28 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
         // Set textview to match item
         nameOfBusinessItem.setText(profile.getProfileName());
         descriptionOfBusinessItem.setText(profile.getBusinessOrPersonal());
+
+        //Set date
+        dateOfPurchase.setText("Date Added: " + profile.getDateOfPurchase());
+
+        //Set Edit Texts
+//        if(profile.getSerialNo() != null || profile.getModel() != null || profile.getQuantity() != 0 || profile.getPrice() != 0) {
+//            serialEdit.setText(profile.getSerialNo(), TextView.BufferType.EDITABLE);
+//            modelEdit.setText(profile.getModel(), TextView.BufferType.EDITABLE);
+//            quantityEdit.setText(profile.getQuantity(), TextView.BufferType.EDITABLE);
+//        }
+
+        if(profile.getSerialNo() != null || profile.getModel() != null || profile.getQuantity() != 0 || profile.getPrice() != 0) {
+            serialEdit.setText(profile.getSerialNo(), TextView.BufferType.EDITABLE);
+            modelEdit.setText(profile.getModel(), TextView.BufferType.EDITABLE);
+
+            String quantity = String.valueOf(profile.getQuantity());
+            quantityEdit.setText(quantity, TextView.BufferType.EDITABLE);
+
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            String priceString = formatter.format(profile.getPrice());
+            priceEdit.setText(priceString, TextView.BufferType.EDITABLE);
+        }
 
         //Set image if it already exists in DB
         if(profile.getImagePath() != null) {
@@ -128,9 +151,27 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
     }
 
     private void updateBusinessItem(Profile profile) {
-        if(quantityEdit.toString().isEmpty() || modelEdit.toString().isEmpty() || serialEdit.toString().isEmpty() || priceEdit.toString().isEmpty()) {
-            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_LONG).show();
-        }
+//        if(quantityEdit.toString().isEmpty() || modelEdit.toString().isEmpty() || serialEdit.toString().isEmpty() || priceEdit.toString().isEmpty()) {
+//            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_LONG).show();
+//        }
+        String serial = serialEdit.getText().toString();
+        profile.setSerialNo(serial);
+
+        String model = modelEdit.getText().toString();
+        profile.setModel(model);
+
+        int quantity = Integer.parseInt(quantityEdit.getText().toString());
+        profile.setQuantity(quantity);
+
+        double price = Double.parseDouble(priceEdit.getText().toString());
+        profile.setPrice(price);
+
+        db.updateProfile(profile);
+
+        //refresh activity
+        startActivity(getIntent());
+        finish();
+
 
     }
 }
