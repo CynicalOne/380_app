@@ -102,7 +102,7 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
 
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             String priceString = formatter.format(profile.getPrice());
-            priceEdit.setText(priceString, TextView.BufferType.EDITABLE);
+            priceEdit.setText( priceString, TextView.BufferType.NORMAL);
         }
 
         //Set image if it already exists in DB
@@ -171,7 +171,5 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
         //refresh activity
         startActivity(getIntent());
         finish();
-
-
     }
 }

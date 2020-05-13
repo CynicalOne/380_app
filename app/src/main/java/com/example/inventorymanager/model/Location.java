@@ -4,14 +4,21 @@ import android.widget.ImageView;
 
 import com.example.inventorymanager.model.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Location
+public class Location implements Serializable
 {
-    public String locationName;
-    public int key;
+    private String locationName;
+    private int key;
     public ImageView locationPic;
     public String address;
+
+    private String serialNo;
+    private String model;
+    private int quantity = 0;
+    private double price;
+    private String dateOfPurchase;
     
     public ArrayList<Item> items;
 
@@ -23,6 +30,46 @@ public class Location
     public Location(String locationName, String address) {
         this.locationName = locationName;
         this.address = address;
+    }
+
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        this.serialNo = serialNo;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getDateOfPurchase() {
+        return dateOfPurchase;
+    }
+
+    public void setDateOfPurchase(String dateOfPurchase) {
+        this.dateOfPurchase = dateOfPurchase;
     }
 
     public String getLocationName() {

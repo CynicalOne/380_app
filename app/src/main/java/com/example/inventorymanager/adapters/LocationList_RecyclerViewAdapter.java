@@ -16,6 +16,7 @@ import com.example.inventorymanager.ItemListActivity;
 import com.example.inventorymanager.LocationViewActivity;
 import com.example.inventorymanager.Persistence.DatabaseHandler_Location;
 import com.example.inventorymanager.R;
+import com.example.inventorymanager.ViewPersonalItemActivity;
 import com.example.inventorymanager.model.Location;
 import com.example.inventorymanager.model.Profile;
 
@@ -79,7 +80,9 @@ public class LocationList_RecyclerViewAdapter extends  RecyclerView.Adapter<Loca
                 return;
             }
 
-            Intent i = new Intent(context, ItemListActivity.class);
+            //Go to other screen and send current "Personal Item"
+            Intent i = new Intent(context, ViewPersonalItemActivity.class);
+            i.putExtra("personalItemSent", location);
 
             context.startActivity(i);
         }

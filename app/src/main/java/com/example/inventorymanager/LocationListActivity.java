@@ -44,7 +44,7 @@ public class LocationListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Locations");
+        toolbar.setTitle("Personal Items");
         setSupportActionBar(toolbar);
 
         databaseHandler = new DatabaseHandler_Location(this);
