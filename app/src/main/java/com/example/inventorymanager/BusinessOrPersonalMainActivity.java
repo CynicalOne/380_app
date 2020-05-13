@@ -43,5 +43,6 @@ public class BusinessOrPersonalMainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 }

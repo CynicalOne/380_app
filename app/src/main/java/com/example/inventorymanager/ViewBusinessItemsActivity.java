@@ -93,6 +93,27 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
 //            quantityEdit.setText(profile.getQuantity(), TextView.BufferType.EDITABLE);
 //        }
 
+        //HardCodedImages since virtual sd always reformats
+        if(profile.getProfileName().equals("David")) {
+            image.setImageDrawable(getResources().getDrawable(R.drawable.david));
+        }
+        else if (profile.getProfileName().equals("Neal")){
+            image.setImageDrawable(getResources().getDrawable(R.drawable.neal));
+        }
+        else if (profile.getProfileName().equals("Kyle")){
+            image.setImageDrawable(getResources().getDrawable(R.drawable.kyle));
+        }
+        else if (profile.getProfileName().equals("Yasmeen")){
+            image.setImageDrawable(getResources().getDrawable(R.drawable.yasmeen));
+        }
+        else if (profile.getProfileName().equals("Josh")){
+            image.setImageDrawable(getResources().getDrawable(R.drawable.josh));
+        }
+        else if (profile.getProfileName().equals("Computers")){
+            image.setImageDrawable(getResources().getDrawable(R.drawable.macbook));
+        }
+
+
         if(profile.getSerialNo() != null || profile.getModel() != null || profile.getQuantity() != 0 || profile.getPrice() != 0) {
             serialEdit.setText(profile.getSerialNo(), TextView.BufferType.EDITABLE);
             modelEdit.setText(profile.getModel(), TextView.BufferType.EDITABLE);
@@ -106,9 +127,9 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
         }
 
         //Set image if it already exists in DB
-        if(profile.getImagePath() != null) {
-            image.setImageBitmap(BitmapFactory.decodeFile(profile.getImagePath()));
-        }
+//        if(profile.getImagePath() != null) {
+//            image.setImageBitmap(BitmapFactory.decodeFile(profile.getImagePath()));
+//        }
 
         setImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,8 +161,8 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
                 profile.setImagePath(path);
                 db.updateProfile(profile);
 
-                ImageView imageView = (ImageView) findViewById(R.id.businessItemPic);
-                imageView.setImageBitmap(bm);
+//                ImageView imageView = (ImageView) findViewById(R.id.businessItemPic);
+//                imageView.setImageBitmap(bm);
                 Toast.makeText(this, path, Toast.LENGTH_LONG).show();
             }
             catch (Exception e) {
