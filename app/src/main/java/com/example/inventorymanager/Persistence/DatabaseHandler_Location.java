@@ -19,7 +19,7 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
     private Context context;
 
     public DatabaseHandler_Location(@Nullable Context context) {
-        super(context, Constants.DB_NAME_LOCATION, null, Constants.DB_VERSION_LOCATION);
+        super(context, Constants.DB_NAME_LOCATION, null, Constants.DB_VERSION_LOCATION + 1);
         this.context = context;
     }
 
@@ -28,7 +28,12 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
         String CREATE_PROFILE_TABLE = "CREATE TABLE " + Constants.TABLE__NAME_LOCATION + "("
                 + Constants.KEY_ID_LOCATION + " Integer PRIMARY KEY,"
                 + Constants.KEY_LOCATION_NAME + " TEXT,"
-                + Constants.KEY_ADDRESS + " TEXT);";
+                + Constants.KEY_ADDRESS + " TEXT,"
+                + Constants.KEY_SERIAL_NUMBER_LOCATION + " TEXT,"
+                + Constants.KEY_MODEL_LOCATION + " TEXT, "
+                + Constants.KEY_QUANTITY_LOCATION+ " INTEGER,"
+                + Constants.KEY_PRICE_LOCATION + " REAL,"
+                + Constants.KEY_DATE_LOCATION + " LONG);";
 
         db.execSQL(CREATE_PROFILE_TABLE);
     }

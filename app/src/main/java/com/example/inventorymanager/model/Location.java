@@ -8,10 +8,16 @@ import java.util.ArrayList;
 
 public class Location
 {
-    public String locationName;
-    public int key;
+    private String locationName;
+    private int key;
     public ImageView locationPic;
     public String address;
+
+    private String serialNo;
+    private String model;
+    private int quantity = 0;
+    private double price;
+    private String dateOfPurchase;
     
     public ArrayList<Item> items;
 
