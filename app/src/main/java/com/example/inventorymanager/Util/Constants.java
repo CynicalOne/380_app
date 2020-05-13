@@ -33,10 +33,10 @@ public class Constants {
     public static final String KEY_LOCATION_NAME = "location_name";
     public static final String KEY_ADDRESS = "address";
     public static final String KEY_ITEM_LIST = "itemList";
-    public static final String KEY_SERIAL_NUMBER_LOCATION = "serialno";
-    public static final String KEY_MODEL_LOCATION = "model";
-    public static final String KEY_QUANTITY_LOCATION = "qty";
-    public static final String KEY_PRICE_LOCATION = "price";
-    public static final String KEY_DATE_LOCATION = "date_of_purchase";
+    public static final String KEY_SERIAL_NUMBER_LOCATION = "serialnoLoc";
+    public static final String KEY_MODEL_LOCATION = "modelLoc";
+    public static final String KEY_QUANTITY_LOCATION = "qtyLoc";
+    public static final String KEY_PRICE_LOCATION = "priceLoc";
+    public static final String KEY_DATE_LOCATION = "date_of_purchaseLoc";
 
 }

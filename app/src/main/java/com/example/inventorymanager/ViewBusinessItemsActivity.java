@@ -171,7 +171,5 @@ public class ViewBusinessItemsActivity extends AppCompatActivity {
         //refresh activity
         startActivity(getIntent());
         finish();
-
-
     }
 }

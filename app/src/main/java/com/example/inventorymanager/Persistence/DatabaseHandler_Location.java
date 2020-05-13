@@ -12,14 +12,16 @@ import androidx.annotation.Nullable;
 import com.example.inventorymanager.Util.Constants;
 import com.example.inventorymanager.model.Location;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DatabaseHandler_Location extends SQLiteOpenHelper {
 
     private Context context;
 
     public DatabaseHandler_Location(@Nullable Context context) {
-        super(context, Constants.DB_NAME_LOCATION, null, Constants.DB_VERSION_LOCATION + 1);
+        super(context, Constants.DB_NAME_LOCATION, null, Constants.DB_VERSION_LOCATION + 1 + 1);
         this.context = context;
     }
 
@@ -40,7 +42,7 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + Constants.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Constants.TABLE__NAME_LOCATION);
         onCreate(db);
     }
 
@@ -52,6 +54,12 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
         contentValues.put(Constants.KEY_LOCATION_NAME, location.getLocationName());
         contentValues.put(Constants.KEY_ADDRESS, location.getAddress());
 
+        contentValues.put(Constants.KEY_SERIAL_NUMBER_LOCATION, location.getSerialNo());
+        contentValues.put(Constants.KEY_MODEL_LOCATION, location.getModel());
+        contentValues.put(Constants.KEY_QUANTITY_LOCATION, location.getQuantity());
+        contentValues.put(Constants.KEY_PRICE_LOCATION, location.getPrice());
+        contentValues.put(Constants.KEY_DATE_LOCATION, java.lang.System.currentTimeMillis());
+
         db.insert(Constants.TABLE__NAME_LOCATION, null, contentValues);
         Log.d("@HERE", "addLocation: " +location.getLocationName());
     }
@@ -62,7 +70,12 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
         Cursor cursor = db.query(Constants.TABLE__NAME_LOCATION,
                 new String[]{Constants.KEY_ID_LOCATION,
                         Constants.KEY_LOCATION_NAME,
-                        Constants.KEY_ADDRESS},
+                        Constants.KEY_ADDRESS,
+                        Constants.KEY_SERIAL_NUMBER_LOCATION,
+                        Constants.KEY_MODEL_LOCATION,
+                        Constants.KEY_QUANTITY_LOCATION,
+                        Constants.KEY_PRICE_LOCATION,
+                        Constants.KEY_DATE_LOCATION},
                 Constants.KEY_ID_LOCATION + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if(cursor != null) {
@@ -74,6 +87,16 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
             location.setKey(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID_LOCATION))));
             location.setLocationName(cursor.getString(cursor.getColumnIndex(Constants.KEY_LOCATION_NAME)));
             location.setAddress(cursor.getString(cursor.getColumnIndex(Constants.KEY_ADDRESS)));
+
+            location.setSerialNo(cursor.getString(cursor.getColumnIndex(Constants.KEY_SERIAL_NUMBER_LOCATION)));
+            location.setModel(cursor.getString(cursor.getColumnIndex(Constants.KEY_MODEL_LOCATION)));
+            location.setQuantity(cursor.getInt(cursor.getColumnIndex(Constants.KEY_QUANTITY_LOCATION)));
+            location.setPrice(cursor.getDouble(cursor.getColumnIndex(Constants.KEY_PRICE_LOCATION)));
+
+            //Convert Time (long) to string
+            DateFormat dateFormat = DateFormat.getDateInstance();
+            String format = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE_LOCATION))));
+            location.setDateOfPurchase(format);
         }
 
         return location;
@@ -87,7 +110,12 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
         Cursor cursor = db.query(Constants.TABLE__NAME_LOCATION,
                 new String[]{Constants.KEY_ID_LOCATION,
                         Constants.KEY_LOCATION_NAME,
-                        Constants.KEY_ADDRESS},
+                        Constants.KEY_ADDRESS,
+                        Constants.KEY_SERIAL_NUMBER_LOCATION,
+                        Constants.KEY_MODEL_LOCATION,
+                        Constants.KEY_QUANTITY_LOCATION,
+                        Constants.KEY_PRICE_LOCATION,
+                        Constants.KEY_DATE_LOCATION},
                 null, null, null, null, null);
 
         if(cursor.moveToFirst()) {
@@ -96,6 +124,17 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
                 location.setKey(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID_LOCATION))));
                 location.setLocationName(cursor.getString(cursor.getColumnIndex(Constants.KEY_LOCATION_NAME)));
                 location.setAddress(cursor.getString(cursor.getColumnIndex(Constants.KEY_ADDRESS)));
+
+                location.setSerialNo(cursor.getString(cursor.getColumnIndex(Constants.KEY_SERIAL_NUMBER_LOCATION)));
+                location.setModel(cursor.getString(cursor.getColumnIndex(Constants.KEY_MODEL_LOCATION)));
+                location.setQuantity(cursor.getInt(cursor.getColumnIndex(Constants.KEY_QUANTITY_LOCATION)));
+                location.setPrice(cursor.getDouble(cursor.getColumnIndex(Constants.KEY_PRICE_LOCATION)));
+
+                //Convert Time (long) to string
+                DateFormat dateFormat = DateFormat.getDateInstance();
+                String format = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE_LOCATION))));
+                location.setDateOfPurchase(format);
+
                 locationsList.add(location);
             }while (cursor.moveToNext());
         }
@@ -108,6 +147,12 @@ public class DatabaseHandler_Location extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Constants.KEY_LOCATION_NAME, location.getLocationName());
         contentValues.put(Constants.KEY_ADDRESS, location.getAddress());
+
+        contentValues.put(Constants.KEY_SERIAL_NUMBER_LOCATION, location.getSerialNo());
+        contentValues.put(Constants.KEY_MODEL_LOCATION, location.getModel());
+        contentValues.put(Constants.KEY_QUANTITY_LOCATION, location.getQuantity());
+        contentValues.put(Constants.KEY_PRICE_LOCATION, location.getPrice());
+        contentValues.put(Constants.KEY_DATE_LOCATION, java.lang.System.currentTimeMillis());
 
         return db.update(Constants.TABLE__NAME_LOCATION, contentValues, Constants.KEY_ID_LOCATION +"=?", new String[]{String.valueOf(location.getKey())});
     }

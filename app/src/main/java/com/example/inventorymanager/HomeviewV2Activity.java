@@ -47,7 +47,7 @@ public class HomeviewV2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_homeview_v2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Profiles");
+        getSupportActionBar().setTitle("Business Items");
 
         databaseHandler = new DatabaseHandler_Profiles(this);
 
